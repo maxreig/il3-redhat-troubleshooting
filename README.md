@@ -10,6 +10,11 @@ Repositorio de apoyo para el curso **Red Hat Enterprise Linux 8 – Diagnostics 
 Aquí encontrarás **material por sesión**, **chuletas de comandos**, **labs** y documentación complementaria para tenerlo todo a mano durante el curso.
 
 ---
+## Accesos directos
+- 📘 [Día 1 – README](day1/README.md)
+- 🧰 [Comandos Día 1](day1/comandos-dia1.md)
+- 🧪 [Labs Día 1](day1/labs-dia1.md) _(en construcción)_
+- 📦 [Día 2](day2/) _(en construcción)_
 
 ## Objetivo del curso
 
