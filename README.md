@@ -1,4 +1,7 @@
 # il3-redhat-troubleshooting
 ## Curso REDHAT: troubleshooting
 
-<img src="day1/images/linux_spartan.jpeg" alt="Tux-Spartan" width="300">
+<p align="center">
+  <img src="day1/images/01-checklist.png" alt="Checklist de arranque" width="400"><br>
+  <em>Tux Spartan</em>
+</p>
