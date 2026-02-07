@@ -200,3 +200,30 @@ Antes de terminar, confirma:
 ## 📌 Tarea opcional (entre sesiones)
 - Leer `man chmod` y `man useradd`
 - Practicar vim 5 minutos (abrir → editar → buscar → guardar → salir)
+
+## 🖥️ Extra C – Instalar GUI GNOME (si tienes Rocky 9 *minimal*)
+
+> Si tu instalación es **mínima** y quieres tener escritorio (GNOME) para la parte formativa, puedes instalarlo con estos pasos.  
+> Requisitos: **conectividad a Internet**, espacio en disco suficiente y repos habilitados.
+
+### Opción recomendada (entorno “Server with GUI”)
+
+```bash
+
+### 1) Actualiza metadatos y sistema (opcional pero recomendado):
+sudo dnf clean all
+sudo dnf -y update
+
+### 2) Instala el entorno gráfico:
+sudo dnf -y groupinstall "Server with GUI"
+
+### 3) Arrancar en modo gráfico por defecto + habilitar el gestor de login (GDM):
+sudo systemctl set-default graphical.target
+sudo systemctl enable --now gdm
+sudo reboot
+
+### Verificacion despues del reinicio
+systemctl get-default
+systemctl status gdm --no-pager
+
+```
