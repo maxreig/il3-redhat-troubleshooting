@@ -95,7 +95,7 @@ Ejemplo para insertar una imagen centrada:
 ## Requisitos recomendados para el laboratorio
 
 - Windows / macOS / Linux con **VirtualBox** (o alternativa equivalente).
-- VM: **RHEL 8** o compatible (por ejemplo Rocky Linux).
+- VM: **RHEL 9** o compatible (por ejemplo Rocky Linux).
 - Recomendado: snapshots para poder volver atrás en los labs.
 
 ---
