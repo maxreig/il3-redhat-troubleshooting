@@ -13,8 +13,8 @@ Aquí encontrarás **material por sesión**, **chuletas de comandos**, **labs** 
 ## Accesos directos
 - 📘 [Día 1 – README](day1/README.md)
 - 🧰 [Comandos Día 1](day1/comandos-dia1.md)
-- 🧪 [Labs Día 1](day1/labs-dia1.md) _(en construcción)_
-- 📦 [Día 2](day2/) _(en construcción)_
+- 🧪 [Labs Día 1](day1/labs-dia1.md)
+- 📦 [Día 2](day2/) _(El jueves que viene lo vemos juntos)_
 
 ## Objetivo del curso
 
