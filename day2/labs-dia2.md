@@ -1,6 +1,6 @@
 # Día 2 – Labs (software, almacenamiento y servicios)
 
-Curso **Red Hat Enterprise Linux 8 – Diagnostics & Troubleshooting**  
+Curso **Red Hat Enterprise Linux 9 – Diagnostics & Troubleshooting**  
 Material de apoyo – Día 2
 
 > Objetivo general del día: practicar un flujo realista de administración y troubleshooting con **paquetes/repos**, **almacenamiento (LVM + montajes persistentes)** y **servicios (systemd)**.
