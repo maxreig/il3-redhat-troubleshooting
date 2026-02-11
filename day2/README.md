@@ -159,3 +159,6 @@ En el **día 3** entraremos con:
 - redes (NetworkManager / `nmcli`)
 - seguridad base (`firewalld`) y SELinux (modo básico)
 - lab integrando disco + servicio + firewall
+
+
+##########################################
