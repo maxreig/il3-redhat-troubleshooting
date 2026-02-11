@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360" role="img" aria-label="Infografia flujo de vida de un servicio systemd">
+  <defs>
+    <style>
+      .title { font: 700 20px 'Arial', sans-serif; fill: #1b1f23; }
+      .text { font: 14px 'Arial', sans-serif; fill: #1b1f23; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .ok { fill: #e9f9ee; stroke: #22c55e; stroke-width: 1.5; }
+      .warn { fill: #fff4e5; stroke: #f59e0b; stroke-width: 1.5; }
+      .err { fill: #ffecec; stroke: #ef4444; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="360" fill="#f8fafc"/>
+  <text x="30" y="40" class="title">Flujo de vida de un servicio</text>
+
+  <rect x="40" y="90" width="200" height="60" class="box" rx="10"/>
+  <text x="70" y="125" class="text">Unit file</text>
+
+  <rect x="280" y="90" width="200" height="60" class="warn" rx="10"/>
+  <text x="310" y="125" class="text">systemd carga</text>
+
+  <rect x="520" y="90" width="200" height="60" class="ok" rx="10"/>
+  <text x="560" y="125" class="text">start / enable</text>
+
+  <rect x="760" y="90" width="200" height="60" class="ok" rx="10"/>
+  <text x="805" y="125" class="text">activo</text>
+
+  <rect x="520" y="190" width="200" height="60" class="err" rx="10"/>
+  <text x="560" y="225" class="text">fallo</text>
+
+  <rect x="760" y="190" width="200" height="60" class="box" rx="10"/>
+  <text x="785" y="225" class="text">logs / restart</text>
+
+  <path d="M240 120 L280 120" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M480 120 L520 120" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M720 120 L760 120" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M620 150 L620 190" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M720 220 L760 220" stroke="#64748b" stroke-width="2" fill="none"/>
+</svg>

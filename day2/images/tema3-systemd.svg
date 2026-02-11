@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="300" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .title { font: 700 22px "Arial", sans-serif; fill: #1f2937; }
+    .label { font: 600 16px "Arial", sans-serif; fill: #111827; }
+    .text { font: 400 14px "Arial", sans-serif; fill: #374151; }
+    .box { fill: #f9fafb; stroke: #d1d5db; stroke-width: 2; rx: 10; }
+    .state { fill: #e0f2fe; stroke: #7dd3fc; }
+  </style>
+
+  <rect width="900" height="300" fill="#ffffff"/>
+  <text x="30" y="40" class="title">systemd: ciclo de vida de un servicio</text>
+
+  <rect x="60" y="80" width="220" height="160" class="box state"/>
+  <text x="80" y="115" class="label">inactive</text>
+  <text x="80" y="140" class="text">Servicio detenido</text>
+  <text x="80" y="165" class="text">No consumiendo recursos</text>
+
+  <rect x="340" y="80" width="220" height="160" class="box"/>
+  <text x="360" y="115" class="label">active</text>
+  <text x="360" y="140" class="text">Servicio en ejecucion</text>
+  <text x="360" y="165" class="text">Responde a peticiones</text>
+
+  <rect x="620" y="80" width="220" height="160" class="box state"/>
+  <text x="640" y="115" class="label">failed</text>
+  <text x="640" y="140" class="text">Fallo al iniciar</text>
+  <text x="640" y="165" class="text">Requiere diagnostico</text>
+</svg>

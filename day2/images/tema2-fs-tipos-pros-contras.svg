@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="520" viewBox="0 0 1000 520" role="img" aria-label="Infografia tipos de sistemas de archivos con pros y contras">
+  <defs>
+    <style>
+      .title { font: 700 20px 'Arial', sans-serif; fill: #1b1f23; }
+      .head { font: 700 16px 'Arial', sans-serif; fill: #1b1f23; }
+      .text { font: 13px 'Arial', sans-serif; fill: #1b1f23; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .pro { fill: #e9f9ee; stroke: #22c55e; stroke-width: 1.5; }
+      .con { fill: #ffecec; stroke: #ef4444; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="520" fill="#f8fafc"/>
+  <text x="30" y="40" class="title">Tipos de FS en Linux: pros y contras (resumen rapido)</text>
+
+  <rect x="30" y="70" width="300" height="200" class="box" rx="10"/>
+  <text x="50" y="105" class="head">XFS (default en RHEL)</text>
+  <rect x="50" y="120" width="260" height="55" class="pro" rx="8"/>
+  <text x="60" y="145" class="text">+ Crecimiento online facil</text>
+  <text x="60" y="165" class="text">+ Escala bien en volumenes grandes</text>
+  <rect x="50" y="185" width="260" height="55" class="con" rx="8"/>
+  <text x="60" y="210" class="text">- No se puede reducir</text>
+  <text x="60" y="230" class="text">- Recovery puede ser lento</text>
+
+  <rect x="350" y="70" width="300" height="200" class="box" rx="10"/>
+  <text x="370" y="105" class="head">ext4</text>
+  <rect x="370" y="120" width="260" height="55" class="pro" rx="8"/>
+  <text x="380" y="145" class="text">+ Muy compatible y estable</text>
+  <text x="380" y="165" class="text">+ Se puede crecer y reducir</text>
+  <rect x="370" y="185" width="260" height="55" class="con" rx="8"/>
+  <text x="380" y="210" class="text">- Menos eficiente en grandes</text>
+  <text x="380" y="230" class="text">- Menos features avanzadas</text>
+
+  <rect x="670" y="70" width="300" height="200" class="box" rx="10"/>
+  <text x="690" y="105" class="head">Btrfs</text>
+  <rect x="690" y="120" width="260" height="55" class="pro" rx="8"/>
+  <text x="700" y="145" class="text">+ Snapshots y checksums</text>
+  <text x="700" y="165" class="text">+ Buenas herramientas</text>
+  <rect x="690" y="185" width="260" height="55" class="con" rx="8"/>
+  <text x="700" y="210" class="text">- No es default en RHEL</text>
+  <text x="700" y="230" class="text">- Curva de aprendizaje</text>
+
+  <rect x="30" y="290" width="300" height="200" class="box" rx="10"/>
+  <text x="50" y="325" class="head">LVM + XFS (combo tipico)</text>
+  <rect x="50" y="340" width="260" height="55" class="pro" rx="8"/>
+  <text x="60" y="365" class="text">+ Flexibilidad para crecer</text>
+  <text x="60" y="385" class="text">+ Buen rendimiento general</text>
+  <rect x="50" y="405" width="260" height="55" class="con" rx="8"/>
+  <text x="60" y="430" class="text">- No se puede reducir FS</text>
+  <text x="60" y="450" class="text">- Requiere disciplina en fstab</text>
+
+  <rect x="350" y="290" width="300" height="200" class="box" rx="10"/>
+  <text x="370" y="325" class="head">Swap</text>
+  <rect x="370" y="340" width="260" height="55" class="pro" rx="8"/>
+  <text x="380" y="365" class="text">+ Evita OOM en picos</text>
+  <text x="380" y="385" class="text">+ Util para hibernacion</text>
+  <rect x="370" y="405" width="260" height="55" class="con" rx="8"/>
+  <text x="380" y="430" class="text">- Lento comparado con RAM</text>
+  <text x="380" y="450" class="text">- No es FS de datos</text>
+
+  <rect x="670" y="290" width="300" height="200" class="box" rx="10"/>
+  <text x="690" y="325" class="head">NFS (remoto)</text>
+  <rect x="690" y="340" width="260" height="55" class="pro" rx="8"/>
+  <text x="700" y="365" class="text">+ Compartido en red</text>
+  <text x="700" y="385" class="text">+ Centraliza backups</text>
+  <rect x="690" y="405" width="260" height="55" class="con" rx="8"/>
+  <text x="700" y="430" class="text">- Depende de red</text>
+  <text x="700" y="450" class="text">- Rendimiento variable</text>
+</svg>

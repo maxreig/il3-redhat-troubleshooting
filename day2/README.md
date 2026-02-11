@@ -23,19 +23,34 @@ En esta sesión vamos a reforzar tres pilares del troubleshooting en entornos Re
 
 ## Temas que tocamos
 
+> En cada tema seguimos esta estructura:
+> 1) **Teoría general de Linux** (conceptos universales).
+> 2) **Enfoque Red Hat** (cómo se implementa en RHEL/Rocky).
+> 3) **Notas para macOS** (puntos equivalentes o diferencias clave).
+
 ### 1) Gestión de software con dnf/yum y repositorios
-- Diferencias principales entre **YUM** y **DNF** (comportamiento, rendimiento, resolución de dependencias).
+**Teoría general de Linux**
+- Qué es un gestor de paquetes y por qué es clave en troubleshooting.
 - Operaciones básicas: buscar, instalar, actualizar, eliminar, listar.
 - Repositorios: qué son, cómo se habilitan/deshabilitan y cómo afectan a incidencias.
 - Tipos de parches / actualizaciones (visión operativa):
   - seguridad
   - correcciones (bugfix)
   - mejoras (enhancement)
+
+**Enfoque Red Hat (RHEL/Rocky)**
+- En RHEL 8, `yum` es un wrapper de `dnf` (misma tecnología, compatibilidad histórica).
+- Diferencias históricas YUM vs DNF y el impacto práctico hoy.
 - **Modelo de suscripción/licencias de Red Hat (visión práctica):**
   - relación entre suscripción → repositorios oficiales → updates → soporte
   - diferencia entre RHEL (suscripción) y clones compatibles (Rocky/Alma) en labs
 
+**Notas para macOS**
+- Equivalente conceptual: Homebrew (`brew`) como gestor de paquetes.
+- Diferencias clave: repositorios comunitarios, firma de paquetes y permisos.
+
 ### 2) Discos y almacenamiento: particionado básico + LVM básico
+**Teoría general de Linux**
 - Repaso de conceptos:
   - disco, partición, filesystem, punto de montaje
 - **/boot** y por qué suele ir fuera de LVM (visión general)
@@ -46,12 +61,23 @@ En esta sesión vamos a reforzar tres pilares del troubleshooting en entornos Re
   - LV (Logical Volume)
   - Ventajas en operación: flexibilidad, crecimiento, organización
 
+**Enfoque Red Hat (RHEL/Rocky)**
+- LVM como estándar en instalaciones RHEL.
+- Utilidades típicas: `lsblk`, `pvs`, `vgs`, `lvs`, `lvextend`, `xfs_growfs`.
+
+**Notas para macOS**
+- APFS y volúmenes: concepto similar a LVM, pero herramientas y flujo distintos.
+- Montaje/gestión con `diskutil` (referencia conceptual, sin entrar en detalles profundos).
+
 ### 3) Servicios con systemctl (systemd)
-- Qué es `systemd` y por qué es clave en troubleshooting
+**Teoría general de Linux**
+- Qué es `systemd` y por qué es clave en troubleshooting.
 - Gestión del ciclo de vida de servicios:
   - start / stop / restart
   - status
   - enable / disable
+
+**Enfoque Red Hat (RHEL/Rocky)**
 - Servicios comunes en entornos RHEL/Rocky (según lab/entorno):
   - `sshd`
   - `firewalld`
@@ -59,6 +85,10 @@ En esta sesión vamos a reforzar tres pilares del troubleshooting en entornos Re
   - `chronyd`
   - `rsyslog` (si aplica)
   - `crond` (según versión/config)
+
+**Notas para macOS**
+- macOS no usa `systemd`; usa `launchd` y `launchctl`.
+- Enfoque equivalente: gestionar servicios/daemons con `launchctl`.
 
 ---
 
@@ -110,6 +140,9 @@ En esta sesión vamos a reforzar tres pilares del troubleshooting en entornos Re
 ---
 
 ## Material asociado (repositorio)
+- `tema1-gestion-software.md` → teoria ampliada del tema 1
+- `tema2-almacenamiento-lvm.md` → teoria ampliada del tema 2
+- `tema3-servicios-systemctl.md` → teoria ampliada del tema 3
 - `comandos-dia2.md` → chuleta de comandos del día 2 (dnf/yum, discos, LVM, systemctl)
 - `labs-dia2.md` → lab guiado con validaciones y checklist final
 - `images/` → capturas del día 2 (si las añades)

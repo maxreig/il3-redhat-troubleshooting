@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="300" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .title { font: 700 22px "Arial", sans-serif; fill: #1f2937; }
+    .label { font: 600 16px "Arial", sans-serif; fill: #111827; }
+    .text { font: 400 14px "Arial", sans-serif; fill: #374151; }
+    .layer { fill: #f3f4f6; stroke: #d1d5db; stroke-width: 2; rx: 10; }
+  </style>
+
+  <rect width="900" height="300" fill="#ffffff"/>
+  <text x="30" y="40" class="title">Capas de almacenamiento en Linux</text>
+
+  <rect x="80" y="70" width="740" height="40" class="layer"/>
+  <text x="110" y="96" class="label">Punto de montaje</text>
+  <text x="320" y="96" class="text">/, /var, /home</text>
+
+  <rect x="80" y="120" width="740" height="40" class="layer"/>
+  <text x="110" y="146" class="label">Sistema de archivos</text>
+  <text x="320" y="146" class="text">xfs, ext4</text>
+
+  <rect x="80" y="170" width="740" height="40" class="layer"/>
+  <text x="110" y="196" class="label">Volumen (LV o particion)</text>
+  <text x="320" y="196" class="text">/dev/vg/lv o /dev/sda1</text>
+
+  <rect x="80" y="220" width="740" height="40" class="layer"/>
+  <text x="110" y="246" class="label">Disco fisico</text>
+  <text x="320" y="246" class="text">/dev/sda, /dev/vdb</text>
+</svg>

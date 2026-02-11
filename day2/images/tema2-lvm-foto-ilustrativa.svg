@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" role="img" aria-label="Ilustracion de almacenamiento: discos, cabina y capas">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef2f7"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 20px 'Arial', sans-serif; fill: #1b1f23; }
+      .label { font: 600 14px 'Arial', sans-serif; fill: #1b1f23; }
+      .small { font: 12px 'Arial', sans-serif; fill: #1b1f23; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="420" fill="url(#bg)"/>
+  <text x="30" y="40" class="title">Ilustracion: De discos fisicos a datos montados</text>
+
+  <rect x="30" y="80" width="280" height="280" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+  <rect x="60" y="110" width="220" height="40" rx="8" fill="#e2e8f0" stroke="#94a3b8"/>
+  <rect x="60" y="170" width="220" height="40" rx="8" fill="#e2e8f0" stroke="#94a3b8"/>
+  <rect x="60" y="230" width="220" height="40" rx="8" fill="#e2e8f0" stroke="#94a3b8"/>
+  <text x="85" y="137" class="label">Disco 1</text>
+  <text x="85" y="197" class="label">Disco 2</text>
+  <text x="85" y="257" class="label">Disco 3</text>
+
+  <rect x="360" y="110" width="260" height="220" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="385" y="145" class="label">Capa LVM</text>
+  <rect x="385" y="170" width="210" height="45" rx="8" fill="#d5f5e3" stroke="#27ae60"/>
+  <rect x="385" y="225" width="210" height="45" rx="8" fill="#fdebd0" stroke="#d35400"/>
+  <rect x="385" y="280" width="210" height="45" rx="8" fill="#fdebd0" stroke="#d35400"/>
+  <text x="405" y="200" class="small">VG: pool de espacio</text>
+  <text x="405" y="255" class="small">LV: volumen apps</text>
+  <text x="405" y="310" class="small">LV: volumen logs</text>
+
+  <rect x="690" y="110" width="280" height="220" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="715" y="145" class="label">FS + Montaje</text>
+  <rect x="715" y="170" width="230" height="45" rx="8" fill="#f2f4f4" stroke="#7f8c8d"/>
+  <rect x="715" y="225" width="230" height="45" rx="8" fill="#f2f4f4" stroke="#7f8c8d"/>
+  <text x="735" y="200" class="small">XFS en /apps</text>
+  <text x="735" y="255" class="small">XFS en /logs</text>
+
+  <path d="M310 220 L360 220" stroke="#64748b" stroke-width="2" fill="none"/>
+  <path d="M620 220 L690 220" stroke="#64748b" stroke-width="2" fill="none"/>
+</svg>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="320" viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .title { font: 700 22px "Arial", sans-serif; fill: #1f2937; }
+    .label { font: 600 16px "Arial", sans-serif; fill: #111827; }
+    .text { font: 400 14px "Arial", sans-serif; fill: #374151; }
+    .box { fill: #f9fafb; stroke: #d1d5db; stroke-width: 2; rx: 10; }
+    .full { fill: #dcfce7; stroke: #86efac; }
+    .maint { fill: #e0f2fe; stroke: #7dd3fc; }
+    .els { fill: #fee2e2; stroke: #fca5a5; }
+    .note { fill: #f3f4f6; stroke: #d1d5db; }
+  </style>
+
+  <rect width="900" height="320" fill="#ffffff"/>
+  <text x="30" y="40" class="title">Parches de seguridad y ciclo de vida en RHEL (vista conceptual)</text>
+
+  <rect x="40" y="80" width="250" height="150" class="box full"/>
+  <text x="60" y="115" class="label">Full Support</text>
+  <text x="60" y="140" class="text">Nuevas funciones</text>
+  <text x="60" y="162" class="text">Bugfix + seguridad</text>
+  <text x="60" y="184" class="text">Mayor ritmo de cambios</text>
+
+  <rect x="325" y="80" width="250" height="150" class="box maint"/>
+  <text x="345" y="115" class="label">Maintenance</text>
+  <text x="345" y="140" class="text">Solo correcciones</text>
+  <text x="345" y="162" class="text">Seguridad prioritaria</text>
+  <text x="345" y="184" class="text">Sin nuevas features</text>
+
+  <rect x="610" y="80" width="250" height="150" class="box els"/>
+  <text x="630" y="115" class="label">Extended Life</text>
+  <text x="630" y="140" class="text">Soporte extendido</text>
+  <text x="630" y="162" class="text">Parches criticos</text>
+  <text x="630" y="184" class="text">Cobertura limitada</text>
+
+  <rect x="40" y="245" width="820" height="50" class="box note"/>
+  <text x="60" y="275" class="text">Idea clave: a medida que avanza el ciclo, baja el ritmo de cambios y se prioriza seguridad.</text>
+</svg>
