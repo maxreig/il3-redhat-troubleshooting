@@ -10,7 +10,7 @@
 
 ---
 
-## Índice visual del Día 2
+# Índice visual del Día 2
 
 ![Índice visual del Día 2](images/indice-visual-dia2.svg)
 
