@@ -22,9 +22,6 @@ Aquí encontrarás **material por sesión**, **chuletas de comandos**, **labs** 
 - 🧰 [Comandos Día 2](day2/comandos-dia2.md)
 - 🧪 [Labs Día 2](day2/labs-dia2.md)
 
-### Diseño pedagógico
-- 🧠 [Propuesta de mejoras pedagógicas](MEJORAS-CURSO.md)
-
 ## Objetivo del curso
 
 Al finalizar el curso, el alumno será capaz de:
