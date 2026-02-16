@@ -82,13 +82,13 @@ macOS se basa en Darwin (núcleo XNU), que integra Mach y capas BSD; Apple indic
 ### Infografia: servicios en macOS (launchd)
 ```mermaid
 flowchart TD
-  A[launchd (PID 1)] --> B[launchctl]
-  A --> C[Daemons del sistema]
-  A --> D[Agents de usuario]
-  C --> E[Plist en /Library/LaunchDaemons o /System/Library/LaunchDaemons]
-  D --> F[Plist en ~/Library/LaunchAgents o /Library/LaunchAgents]
-  B --> G[load/unload, start/stop, list]
-  A --> H[Logs y estado del servicio]
+  A["launchd PID 1"] --> B["launchctl"]
+  A --> C["Daemons del sistema"]
+  A --> D["Agents de usuario"]
+  C --> E["Plist: /Library/LaunchDaemons o /System/Library/LaunchDaemons"]
+  D --> F["Plist: ~/Library/LaunchAgents o /Library/LaunchAgents"]
+  B --> G["load/unload, start/stop, list"]
+  A --> H["Logs y estado del servicio"]
 ```
 
 ## Ejemplos basicos (RHEL/Rocky)
@@ -166,3 +166,23 @@ launchctl list
 launchctl load /Library/LaunchDaemons/com.example.service.plist
 launchctl unload /Library/LaunchDaemons/com.example.service.plist
 ```
+
+## Gestion de servicios por GUI (RHEL/Rocky)
+Para administrar servicios de forma grafica en RHEL/Rocky, la opcion recomendada es **Cockpit** (Web Console). Desde su vista de servicios puedes:
+1. Ver estado (`running`, `failed`, `inactive`).
+1. Iniciar, detener, reiniciar y recargar servicios.
+1. Habilitar o deshabilitar servicios al arranque.
+1. Revisar logs asociados.
+
+Comando para habilitar y lanzar la interfaz de Cockpit:
+```bash
+sudo systemctl enable --now cockpit.socket
+```
+
+Luego abre en navegador:
+```text
+https://localhost:9090
+```
+
+Captura de referencia (Red Hat Web Console):
+![Red Hat Cockpit - vista de sistema](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Managing_systems_using_the_RHEL_7_web_console-en-US/images/f5439b4b765bd7f3b8e5572f4c837b6e/cockpit-system-restart.png)

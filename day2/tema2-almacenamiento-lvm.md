@@ -186,3 +186,17 @@ diskutil list
 # Informacion de un volumen
 diskutil info /dev/disk1
 ```
+
+## Gestion de almacenamiento por GUI (RHEL/Rocky)
+Si tienes entorno grafico, puedes revisar discos, particiones y montajes con la aplicacion **Discos** (GNOME Disks). Es util para diagnostico rapido visual de:
+1. Estado SMART del disco.
+1. Particiones y filesystem.
+1. Puntos de montaje y UUID.
+
+Comando para lanzar la herramienta GUI:
+```bash
+gnome-disks
+```
+
+Captura de referencia (Red Hat - almacenamiento en Cockpit):
+![Red Hat Cockpit - gestion de volumenes](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Managing_systems_using_the_RHEL_7_web_console-en-US/images/0cad640b2c51e59ad521813aa8f5826f/cockpit-lvm-rhel.png)
