@@ -17,9 +17,22 @@ El archivo `/etc/fstab` define montajes persistentes. Un error en `fstab` puede 
 
 ![Capas de almacenamiento](images/tema2-capas.svg)
 
-Swap:
-1. Memoria virtual para picos de uso o hibernacion.
-1. Debe estar dimensionada y monitorizada.
+### 2.1 Swap (memoria de paginacion)
+Swap es un area de disco que el kernel usa como extension de la RAM. En Linux es clave para absorber picos de memoria, evitar OOM (out of memory) en cargas puntuales y, si aplica, permitir hibernacion.
+
+![Infografia swap](images/tema2-swap.svg)
+
+Puntos operativos:
+1. Cuando falta RAM, el kernel puede paginar a swap; esto evita caidas, pero ralentiza el sistema.
+1. Swap no reemplaza RAM: es un mecanismo de contencion, no de rendimiento.
+1. En troubleshooting, revisar swap ayuda a detectar presion de memoria.
+1. Se puede usar como particion dedicada o como archivo (swapfile).
+1. Debe estar dimensionada y monitorizada (uso sostenido suele indicar falta de RAM o leak).
+
+Comandos rapidos:
+1. `free -h` para ver RAM y swap.
+1. `swapon --show` o `cat /proc/swaps` para listar swap activa.
+1. `vmstat 1 5` para observar presion de memoria.
 
 ## Enfoque Red Hat (RHEL/Rocky)
 En instalaciones modernas de RHEL, LVM es el estandar porque permite flexibilidad. LVM introduce capas logicas que permiten crecer o reducir volumenes sin tocar el disco fisico de forma directa.
@@ -29,14 +42,14 @@ Modelo LVM:
 1. VG: Volume Group.
 1. LV: Logical Volume.
 
+![Infografia modelo LVM](images/tema2-lvm-pv-vg-lv-fs.svg)
+
 Ventajas:
 1. Expandir capacidad sin downtime largo.
 1. Organizar volumenes por uso.
 1. Mejor control en entornos virtualizados.
 
 ![Modelo LVM](images/tema2-lvm.svg)
-
-![Infografia PV/VG/LV/FS](images/tema2-lvm-pv-vg-lv-fs.svg)
 
 ![Ilustracion almacenamiento](images/tema2-lvm-foto-ilustrativa.svg)
 

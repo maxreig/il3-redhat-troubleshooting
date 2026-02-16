@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980" role="img" aria-labelledby="title desc">
+  <title id="title">Indice visual del Dia 2</title>
+  <desc id="desc">Infografia del dia 2: software, almacenamiento y servicios con flujo de troubleshooting.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 42px 'DejaVu Sans', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 22px 'DejaVu Sans', Arial, sans-serif; fill: #334155; }
+      .h { font: 700 24px 'DejaVu Sans', Arial, sans-serif; }
+      .t { font: 500 18px 'DejaVu Sans', Arial, sans-serif; fill: #0f172a; }
+      .small { font: 500 16px 'DejaVu Sans', Arial, sans-serif; fill: #334155; }
+      .pill { font: 700 18px 'DejaVu Sans', Arial, sans-serif; fill: white; }
+      .stroke { stroke: #0f172a; stroke-width: 2; }
+      .shadow { filter: drop-shadow(0 2px 6px rgba(15,23,42,.15)); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155" />
+    </marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef2ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1400" height="980" fill="url(#bg)"/>
+
+  <text x="700" y="70" text-anchor="middle" class="title">Indice Visual del Dia 2</text>
+  <text x="700" y="106" text-anchor="middle" class="subtitle">RHEL Troubleshooting: Software, Almacenamiento y Servicios</text>
+
+  <g class="shadow">
+    <rect x="470" y="140" rx="14" ry="14" width="460" height="70" fill="#0b3d91"/>
+    <text x="700" y="184" text-anchor="middle" class="pill">Inicio: detectar capa afectada</text>
+  </g>
+
+  <!-- Column containers -->
+  <g class="shadow">
+    <rect x="80" y="260" rx="16" ry="16" width="380" height="500" fill="#e0f2fe" class="stroke"/>
+    <rect x="510" y="260" rx="16" ry="16" width="380" height="500" fill="#dcfce7" class="stroke"/>
+    <rect x="940" y="260" rx="16" ry="16" width="380" height="500" fill="#fff7ed" class="stroke"/>
+  </g>
+
+  <text x="270" y="302" text-anchor="middle" class="h" fill="#0c4a6e">1. Software y paquetes</text>
+  <text x="700" y="302" text-anchor="middle" class="h" fill="#166534">2. Almacenamiento y LVM</text>
+  <text x="1130" y="302" text-anchor="middle" class="h" fill="#9a3412">3. Servicios con systemd</text>
+
+  <!-- Software steps -->
+  <rect x="125" y="340" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="270" y="377" text-anchor="middle" class="t">dnf / yum</text>
+  <rect x="125" y="425" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="270" y="462" text-anchor="middle" class="t">Repositorios</text>
+  <rect x="125" y="510" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="270" y="547" text-anchor="middle" class="t">Dependencias</text>
+  <rect x="125" y="595" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="270" y="632" text-anchor="middle" class="t">Parches y updates</text>
+
+  <!-- Storage steps -->
+  <rect x="555" y="340" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="700" y="377" text-anchor="middle" class="t">Disco / particion</text>
+  <rect x="555" y="425" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="700" y="462" text-anchor="middle" class="t">PV - VG - LV</text>
+  <rect x="555" y="510" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="700" y="547" text-anchor="middle" class="t">Filesystem + montaje</text>
+  <rect x="555" y="595" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="700" y="632" text-anchor="middle" class="t">Persistencia en /etc/fstab</text>
+
+  <!-- Services steps -->
+  <rect x="985" y="340" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="1130" y="377" text-anchor="middle" class="t">systemctl status</text>
+  <rect x="985" y="425" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="1130" y="462" text-anchor="middle" class="t">start / stop / restart</text>
+  <rect x="985" y="510" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="1130" y="547" text-anchor="middle" class="t">enable / disable</text>
+  <rect x="985" y="595" rx="10" ry="10" width="290" height="60" fill="#ffffff" class="stroke"/>
+  <text x="1130" y="632" text-anchor="middle" class="t">journalctl</text>
+
+  <!-- Vertical arrows in columns -->
+  <line x1="270" y1="400" x2="270" y2="425" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="270" y1="485" x2="270" y2="510" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="270" y1="570" x2="270" y2="595" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <line x1="700" y1="400" x2="700" y2="425" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="700" y1="485" x2="700" y2="510" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="700" y1="570" x2="700" y2="595" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <line x1="1130" y1="400" x2="1130" y2="425" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="1130" y1="485" x2="1130" y2="510" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="1130" y1="570" x2="1130" y2="595" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- From start to columns -->
+  <line x1="700" y1="210" x2="270" y2="260" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="700" y1="210" x2="700" y2="260" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="700" y1="210" x2="1130" y2="260" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Bottom result -->
+  <g class="shadow">
+    <rect x="470" y="800" rx="14" ry="14" width="460" height="70" fill="#1f2937"/>
+    <text x="700" y="844" text-anchor="middle" class="pill">Validacion tecnica -> Sistema estable</text>
+  </g>
+
+  <line x1="270" y1="655" x2="640" y2="800" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="700" y1="655" x2="700" y2="800" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="1130" y1="655" x2="760" y2="800" stroke="#334155" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <text x="700" y="930" text-anchor="middle" class="small">Metodo sugerido: identificar capa, aplicar acciones de esa capa y validar antes de pasar a la siguiente.</text>
+</svg>

@@ -77,6 +77,19 @@ Servicios comunes:
 
 ## Notas para macOS
 macOS usa `launchd` y `launchctl`. El concepto es similar: servicios definidos como plist, estados y logs. El enfoque equivalente es revisar servicios y reiniciarlos con `launchctl`.
+macOS se basa en Darwin (núcleo XNU), que integra Mach y capas BSD; Apple indica que Darwin se basa en tecnologías FreeBSD y Mach. Origen y base técnica: [Apple Newsroom: Darwin 1.0](https://www.apple.com/newsroom/2000/04/05Apple-Releases-Darwin-1-0-Open-Source/) y [BSD Overview (Apple Dev)](https://developer.apple.com/library/archive/documentation/Darwin/Conceptual/KernelProgramming/BSD/BSD.html).
+
+### Infografia: servicios en macOS (launchd)
+```mermaid
+flowchart TD
+  A[launchd (PID 1)] --> B[launchctl]
+  A --> C[Daemons del sistema]
+  A --> D[Agents de usuario]
+  C --> E[Plist en /Library/LaunchDaemons o /System/Library/LaunchDaemons]
+  D --> F[Plist en ~/Library/LaunchAgents o /Library/LaunchAgents]
+  B --> G[load/unload, start/stop, list]
+  A --> H[Logs y estado del servicio]
+```
 
 ## Ejemplos basicos (RHEL/Rocky)
 ```bash

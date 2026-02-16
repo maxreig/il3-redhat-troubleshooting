@@ -1,58 +1,114 @@
-# Día 2 – Labs (software, almacenamiento y servicios)
+# Día 2 – Labs (almacenamiento, swap y servicios)
 
-Curso **Red Hat Enterprise Linux 9 – Diagnostics & Troubleshooting**  
-Material de apoyo – Día 2
+Curso **Red Hat Enterprise Linux 8/9 – Diagnostics & Troubleshooting**  
+Material práctico – Día 2
 
-> Objetivo general del día: practicar un flujo realista de administración y troubleshooting con **paquetes/repos**, **almacenamiento (LVM + montajes persistentes)** y **servicios (systemd)**.
-
----
-
-## ✅ Lab principal – “Filesystems persistentes con LVM + verificación de /etc/fstab”
-
-### Objetivo
-1. Presentar un **nuevo disco** a la VM (VirtualBox).
-2. Detectar el disco desde Linux y validar que el sistema lo ve correctamente.
-3. Crear una estructura **LVM** completa:
-   - **PV** sobre el disco (o partición)
-   - **VG** dedicado
-   - **3 a 5 LV** (según tiempo)
-4. Crear **filesystems** en cada LV.
-5. Montar los FS y dejar los montajes **persistentes** en `/etc/fstab` usando **UUID**.
-6. Validar con `mount -a` y (opcional) con reinicio.
+Objetivo del bloque práctico: ejecutar 3 laboratorios reales de operación en RHEL.
 
 ---
 
-### Paso 0 – Preparación (si aplica)
-- Entra con un usuario con `sudo` o como `root`.
-- (Recomendado) Crea un **snapshot** antes de tocar discos y fstab.
+## Requisitos previos
 
-Sanity check:
-
-```bash
-cat /etc/redhat-release
-hostnamectl
-ip a
-df -h
-lsblk
-```
-
-Asegúrate de tener herramientas instaladas (sobre todo en instalación minimal):
+- Acceso con usuario con permisos `sudo`.
+- VM en VirtualBox.
+- Snapshot recomendado antes de empezar.
+- Paquetes base instalados:
 
 ```bash
 sudo dnf -y install lvm2 xfsprogs util-linux
 ```
 
+Verificación rápida inicial:
+
+```bash
+cat /etc/redhat-release
+hostnamectl
+lsblk
+df -hT
+free -h
+```
+
 ---
 
-### Paso 1 – Presentar un disco nuevo en VirtualBox
-En VirtualBox:
-- Apaga la VM (si hace falta).
-- Añade un **nuevo disco** (por ejemplo 20 GB).
-- Arranca la VM.
+## Lab 0 – Gestión mínima de software con `dnf`
+
+**Tiempo estimado alumno:** 20–30 minutos.
+
+### Objetivo
+Practicar lo mínimo necesario de gestión de software: comprobar si un paquete está instalado, buscar paquetes en repositorios e instalar uno nuevo.
+
+### Paso 1 – Comprobar repositorios y caché
+
+Ver repos habilitados:
+
+```bash
+sudo dnf repolist
+```
+
+Refrescar metadatos:
+
+```bash
+sudo dnf makecache
+```
+
+### Paso 2 – Verificar si un paquete está instalado
+
+Ejemplo con `tree`:
+
+```bash
+rpm -q tree
+```
+
+Si no está instalado, el comando indicará que no existe el paquete instalado.
+
+### Paso 3 – Buscar paquetes en repositorios
+
+Buscar por nombre:
+
+```bash
+dnf search tree
+```
+
+Ver información del paquete:
+
+```bash
+dnf info tree
+```
+
+### Paso 4 – Instalar paquete
+
+```bash
+sudo dnf -y install tree
+```
+
+Validar instalación:
+
+```bash
+rpm -q tree
+tree --version
+```
+
+### Paso 5 – Consultar historial básico de `dnf`
+
+```bash
+sudo dnf history | head
+```
 
 ---
 
-### Paso 2 – Detectar el nuevo disco en Linux
+## Lab 1 – Filesystems persistentes con LVM
+
+**Tiempo estimado alumno:** 50–70 minutos.
+
+### Objetivo
+Crear LVM sobre un disco nuevo, montar varios filesystems y dejarlos persistentes en `/etc/fstab`.
+
+### Paso 1 – Presentar disco en VirtualBox
+
+- Añade un disco nuevo (ejemplo: 20 GB) a la VM.
+- Inicia la VM.
+
+### Paso 2 – Detectar el disco en Linux
 
 ```bash
 lsblk
@@ -60,69 +116,23 @@ sudo fdisk -l
 dmesg | tail -n 80
 ```
 
-📌 Identifica el disco nuevo (ejemplo típico: `/dev/sdb`).  
-⚠️ **Ojo**: no uses el disco del sistema (`/dev/sda`) por error.
+Identifica el disco nuevo (ejemplo: `/dev/sdb`). No uses el disco del sistema por error.
 
----
+### Paso 3 – Crear estructura LVM (PV -> VG -> LV)
 
-### Paso 3 – (Opcional) Crear partición LVM
-> Para simplificar el lab puedes usar **todo el disco como PV** y saltarte este paso.
-
-Si quieres particionar (recomendado en entornos “más reales”):
-
-```bash
-sudo fdisk /dev/sdb
-```
-
-Dentro de `fdisk` (guía rápida):
-- `g` → tabla GPT (opcional)
-- `n` → nueva partición (usa todo el disco)
-- `t` → tipo (si te lo pide, selecciona “Linux LVM” si está disponible)
-- `w` → escribir y salir
-
-Luego:
-
-```bash
-lsblk
-```
-
-Ejemplo esperado: `/dev/sdb1`
-
----
-
-### Paso 4 – Crear LVM (PV → VG → LV)
-
-#### 4.1 Crear el PV
-Si usas disco entero:
+Crear PV (usando el disco completo):
 
 ```bash
 sudo pvcreate /dev/sdb
 ```
 
-Si has creado partición:
-
-```bash
-sudo pvcreate /dev/sdb1
-```
-
-#### 4.2 Crear el VG dedicado
+Crear VG:
 
 ```bash
 sudo vgcreate vg_lab /dev/sdb
-# o:
-# sudo vgcreate vg_lab /dev/sdb1
 ```
 
-Validación:
-
-```bash
-pvs
-vgs
-```
-
-#### 4.3 Crear 3 a 5 LVs
-
-Ejemplo con 3 LVs (rápido):
+Crear LVs de ejemplo:
 
 ```bash
 sudo lvcreate -n lv_data1 -L 3G vg_lab
@@ -130,214 +140,247 @@ sudo lvcreate -n lv_data2 -L 3G vg_lab
 sudo lvcreate -n lv_data3 -L 3G vg_lab
 ```
 
-Si quieres 5 LVs (más completo):
+Validar:
 
 ```bash
-sudo lvcreate -n lv_data4 -L 2G vg_lab
-sudo lvcreate -n lv_data5 -L 2G vg_lab
-```
-
-Validación:
-
-```bash
+pvs
+vgs
 lvs
 ```
 
----
+### Paso 4 – Crear filesystems y montar
 
-### Paso 5 – Crear filesystems
-
-Recomendación (por coherencia con RHEL): **XFS**.
+Formatear en XFS:
 
 ```bash
 sudo mkfs.xfs /dev/vg_lab/lv_data1
 sudo mkfs.xfs /dev/vg_lab/lv_data2
 sudo mkfs.xfs /dev/vg_lab/lv_data3
-# opcional:
-sudo mkfs.xfs /dev/vg_lab/lv_data4
-sudo mkfs.xfs /dev/vg_lab/lv_data5
 ```
 
-Validación:
-
-```bash
-lsblk -f | grep vg_lab
-blkid | grep vg_lab
-```
-
----
-
-### Paso 6 – Crear puntos de montaje y montar
-
-Crea una estructura simple:
+Crear puntos de montaje:
 
 ```bash
 sudo mkdir -p /data/data1 /data/data2 /data/data3
-# opcional:
-sudo mkdir -p /data/data4 /data/data5
 ```
 
-Monta:
+Montar:
 
 ```bash
 sudo mount /dev/vg_lab/lv_data1 /data/data1
 sudo mount /dev/vg_lab/lv_data2 /data/data2
 sudo mount /dev/vg_lab/lv_data3 /data/data3
-# opcional:
-sudo mount /dev/vg_lab/lv_data4 /data/data4
-sudo mount /dev/vg_lab/lv_data5 /data/data5
 ```
 
-Validación:
+Validar:
 
 ```bash
-df -hT | grep -E "/data/data"
-findmnt | grep -E "/data/data"
+findmnt | grep -E '/data/data'
+df -hT | grep -E '/data/data'
 ```
 
----
+### Paso 5 – Persistencia en `/etc/fstab`
 
-### Paso 7 – Persistencia en /etc/fstab (con UUID)
-
-#### 7.1 Backup antes de tocar
+Backup de seguridad:
 
 ```bash
 sudo cp -a /etc/fstab /etc/fstab.bak
 ```
 
-#### 7.2 Obtener UUID
+Obtener UUID:
 
 ```bash
-lsblk -f | grep vg_lab
-blkid | grep vg_lab
+sudo blkid /dev/vg_lab/lv_data1 /dev/vg_lab/lv_data2 /dev/vg_lab/lv_data3
 ```
 
-#### 7.3 Editar fstab
+Editar `/etc/fstab`:
 
 ```bash
-sudo vim /etc/fstab
+sudo vi /etc/fstab
 ```
 
-Ejemplo (ajusta UUIDs reales y tipo `xfs`):
+Añadir líneas (sustituyendo UUID reales):
 
 ```text
-UUID=XXXX-XXXX  /data/data1  xfs  defaults  0  0
-UUID=YYYY-YYYY  /data/data2  xfs  defaults  0  0
-UUID=ZZZZ-ZZZZ  /data/data3  xfs  defaults  0  0
-# UUID=AAAA-AAAA  /data/data4  xfs  defaults  0  0
-# UUID=BBBB-BBBB  /data/data5  xfs  defaults  0  0
+UUID=<UUID_LV_DATA1>  /data/data1  xfs  defaults  0  0
+UUID=<UUID_LV_DATA2>  /data/data2  xfs  defaults  0  0
+UUID=<UUID_LV_DATA3>  /data/data3  xfs  defaults  0  0
 ```
 
-> Consejo: usa UUID (más robusto que `/dev/sdX`).
-
----
-
-### Paso 8 – Validación SIN reiniciar (la clave del lab)
-
-Simula “post-reboot”:
+Validar sin reiniciar:
 
 ```bash
 sudo umount /data/data1 /data/data2 /data/data3
-# opcional:
-sudo umount /data/data4 /data/data5 2>/dev/null || true
-```
-
-Monta todo lo del fstab:
-
-```bash
 sudo mount -a
-```
-
-Comprueba:
-
-```bash
-findmnt | grep -E "/data/data"
-df -hT | grep -E "/data/data"
-```
-
-📌 Si `mount -a` falla:
-- revisa que existan los directorios (`/data/dataX`)
-- revisa UUID (copiado mal)
-- revisa tipo FS (`xfs` vs `ext4`)
-- revisa que el dispositivo exista (`lsblk -f`)
-
----
-
-### Paso 9 – (Opcional) Validación con reinicio
-
-```bash
-sudo reboot
-```
-
-Tras reiniciar:
-
-```bash
-findmnt | grep -E "/data/data"
-df -hT | grep -E "/data/data"
+findmnt | grep -E '/data/data'
 ```
 
 ---
 
-## 🧪 Extra A – Gestión de software y repos (mini-taller)
+## Lab 2 – Ampliar SWAP con un disco nuevo (VirtualBox)
+
+**Tiempo estimado alumno:** 30–45 minutos.
 
 ### Objetivo
-Confirmar que sabes **listar repos**, **limpiar cache**, **instalar** y **auditar** cambios (history).
+Añadir un nuevo disco y ampliar la swap del sistema de forma persistente.
+
+### Paso 1 – Presentar segundo disco
+
+- Añade otro disco a la VM (ejemplo: 4 GB).
+- Inicia la VM.
+
+Detectar disco (ejemplo: `/dev/sdc`):
 
 ```bash
-sudo dnf repolist
-sudo dnf repolist --all
-sudo dnf clean all
-sudo dnf makecache
-sudo dnf -y install tree
-tree --version || true
-sudo dnf history | head
+lsblk
+sudo fdisk -l
 ```
 
-> Si estás en RHEL y no hay repos: revisa suscripción (`subscription-manager status`).
+### Paso 2 – Crear swap en el nuevo disco
+
+Inicializar área swap:
+
+```bash
+sudo mkswap /dev/sdc
+```
+
+Activar swap:
+
+```bash
+sudo swapon /dev/sdc
+```
+
+Validar estado:
+
+```bash
+swapon --show
+free -h
+```
+
+### Paso 3 – Hacer persistente en `/etc/fstab`
+
+Backup de seguridad (si no existe ya):
+
+```bash
+sudo cp -a /etc/fstab /etc/fstab.bak.swap
+```
+
+Obtener UUID del dispositivo swap:
+
+```bash
+sudo blkid /dev/sdc
+```
+
+Editar `/etc/fstab`:
+
+```bash
+sudo vi /etc/fstab
+```
+
+Añadir línea (sustituye UUID real):
+
+```text
+UUID=<UUID_SWAP_NUEVA>  none  swap  defaults  0  0
+```
+
+Probar configuración:
+
+```bash
+sudo swapoff /dev/sdc
+sudo swapon -a
+swapon --show
+```
 
 ---
 
-## 🧪 Extra B – systemctl: servicio común + logs
+## Lab 3 – Crear un servicio `systemd` desde un script simple
+
+**Tiempo estimado alumno:** 25–35 minutos.
 
 ### Objetivo
-Practicar el ciclo de vida de un servicio real y su troubleshooting básico.
+Crear un script básico de verificación de filesystems y ejecutarlo como servicio `systemd`.
 
-Ejemplo con `chronyd` (tiempo) o `sshd` (acceso remoto):
+### Paso 1 – Crear script de chequeo
 
 ```bash
-sudo systemctl status chronyd || true
-sudo systemctl enable --now chronyd
-systemctl is-enabled chronyd
-sudo systemctl restart chronyd
-journalctl -u chronyd -n 50 --no-pager
+sudo tee /usr/local/bin/check-fs.sh > /dev/null <<'SCRIPT'
+#!/usr/bin/env bash
+set -euo pipefail
+DATE="$(date '+%F %T')"
+echo "[$DATE] Estado de filesystems:"
+df -hT | sed -n '1,12p'
+SCRIPT
 ```
 
-Si prefieres SSH:
+Dar permisos:
 
 ```bash
-sudo systemctl status sshd
-sudo systemctl enable --now sshd
-journalctl -u sshd -n 50 --no-pager
+sudo chmod +x /usr/local/bin/check-fs.sh
+```
+
+Prueba manual:
+
+```bash
+/usr/local/bin/check-fs.sh
+```
+
+### Paso 2 – Crear unidad `systemd`
+
+```bash
+sudo tee /etc/systemd/system/check-fs.service > /dev/null <<'UNIT'
+[Unit]
+Description=Chequeo simple de filesystems
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/check-fs.sh
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+```
+
+Recargar unidades:
+
+```bash
+sudo systemctl daemon-reload
+```
+
+### Paso 3 – Ejecutar y validar el servicio
+
+Lanzar servicio:
+
+```bash
+sudo systemctl start check-fs.service
+```
+
+Revisar estado:
+
+```bash
+sudo systemctl status check-fs.service --no-pager
+```
+
+Revisar logs:
+
+```bash
+journalctl -u check-fs.service -n 30 --no-pager
+```
+
+Habilitar para que quede disponible en arranque:
+
+```bash
+sudo systemctl enable check-fs.service
+systemctl is-enabled check-fs.service
 ```
 
 ---
 
-## ✅ Cierre del día (checklist final)
+## Checklist final del Día 2
 
-Antes de terminar, confirma:
-- [ ] Disco nuevo presentado y detectado (`lsblk`, `fdisk -l`)
-- [ ] PV creado correctamente (`pvs`)
-- [ ] VG creado (`vgs`)
-- [ ] 3–5 LVs creados (`lvs`)
-- [ ] Filesystems creados y visibles (`lsblk -f`, `blkid`)
-- [ ] Montajes OK (`findmnt`, `df -hT`)
-- [ ] `/etc/fstab` actualizado con **UUID** y verificado con `mount -a`
-- [ ] (Opcional) Tras reinicio, sigue todo montado
-- [ ] (Recomendado) Snapshot guardado
-
----
-
-## 📌 Tarea opcional (entre sesiones)
-- Leer: `man dnf`, `man lvm`, `man fstab`
-- Practicar: romper algo controlado y arreglarlo:
-  - cambia un UUID en fstab a propósito y recupera desde `/etc/fstab.bak`
+- [ ] Lab 1 completado: LVM creado, montado y persistente en `/etc/fstab`.
+- [ ] Lab 2 completado: swap nueva activa y persistente.
+- [ ] Lab 3 completado: servicio `check-fs.service` ejecuta y registra en journal.
+- [ ] Validaciones ejecutadas con `lsblk`, `findmnt`, `swapon --show`, `systemctl status`, `journalctl`.
