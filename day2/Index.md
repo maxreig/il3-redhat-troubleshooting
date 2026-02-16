@@ -23,8 +23,18 @@ En esta sesión vamos a reforzar tres pilares del troubleshooting en entornos Re
 
 ---
 
+## Recordatorio del Día 1
+
+En el primer día dejamos una VM RHEL/Rocky instalada y validada con checks básicos de sistema.  
+Trabajamos la estructura del sistema de archivos y operaciones esenciales con ficheros y directorios.  
+Reforzamos permisos, propietarios y `umask` para diagnosticar errores típicos de acceso.  
+También practicamos edición básica con `vim` y administración de usuarios/grupos, cerrando con un lab de permisos en carpeta compartida.
+
+---
+
 ## Objetivos del alumno (al finalizar el día 2)
 
+- Recordar cosas del día 1.
 - Gestionar software con `dnf/yum` y resolver incidencias básicas de repos y dependencias.
 - Entender almacenamiento en capas (disco/partición/LVM/filesystem/montaje) y validar persistencia en `/etc/fstab`.
 - Administrar servicios con `systemctl` y usar `journalctl` para diagnóstico rápido.
