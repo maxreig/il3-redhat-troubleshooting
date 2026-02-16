@@ -90,3 +90,17 @@ brew search nginx
 brew install nginx
 brew info nginx
 ```
+
+## Gestion de paqueteria por GUI (RHEL/Rocky)
+En entornos con escritorio grafico, tambien se puede gestionar software sin terminal usando la tienda de software del sistema (GNOME Software). Desde ahi puedes:
+1. Buscar paquetes por nombre o categoria.
+1. Instalar, actualizar o eliminar aplicaciones.
+1. Revisar actualizaciones pendientes de forma visual.
+
+Comando para lanzar la herramienta GUI:
+```bash
+gnome-software
+```
+
+Captura de referencia (Red Hat Web Console):
+![Red Hat Web Console - vista general](https://docs.redhat.com/es/documentation/red_hat_enterprise_linux/9/html-single/getting_started_with_the_rhel_9_web_console/images/cockpit-overview-screen.png)
