@@ -102,5 +102,5 @@ Comando para lanzar la herramienta GUI:
 gnome-software
 ```
 
-Captura de referencia (Red Hat Web Console):
-![Red Hat Web Console - vista general](https://docs.redhat.com/es/documentation/red_hat_enterprise_linux/9/html-single/getting_started_with_the_rhel_9_web_console/images/cockpit-overview-screen.png)
+Captura ilustrativa local (GUI en entorno Red Hat/GNOME):
+![Gestion de software por GUI en RHEL/Rocky](images/tema1-gui-software-ilustrativa.svg)
