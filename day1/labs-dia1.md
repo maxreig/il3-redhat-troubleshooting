@@ -206,7 +206,7 @@ Antes de terminar, confirma:
 > Si tu instalación es **mínima** y quieres tener escritorio (GNOME) para la parte formativa, puedes instalarlo con estos pasos.  
 > Requisitos: **conectividad a Internet**, espacio en disco suficiente y repos habilitados.
 
-### Opción recomendada (entorno “Server with GUI”)
+### 1 - Opción recomendada (entorno “Server with GUI”)
 
 ```bash
 
@@ -225,5 +225,27 @@ sudo reboot
 ### Verificacion despues del reinicio
 systemctl get-default
 systemctl status gdm --no-pager
+
+```
+### 2 - Opción recomendada (Instalar las GuestAdditions: Copy & Paste + ReSize Screen & more...)
+
+```bash
+
+### 1) Actualiza metadatos y sistema (opcional pero recomendado):
+sudo dnf -y update
+
+### 2)Instala dependencias (Rocky 9):
+sudo dnf -y install gcc make perl kernel-devel kernel-headers elfutils-libelf-devel bzip2
+
+### 3)Montamos el CD con las "Guest Additions":
+mkdir -p /mnt/GuestAdditions
+mount /dev/cdrom /mnt/GuestAdditions
+cd cd /mnt/cdrom/...
+sudo bash VBoxLinuxAdditions.run
+sudo reboot
+
+### 4) Check - Comprueba que los servicios/módulos están cargados
+lsmod | egrep 'vboxvideo|vboxguest|vboxsf'
+systemctl status vboxadd.service 2>/dev/null || true
 
 ```
