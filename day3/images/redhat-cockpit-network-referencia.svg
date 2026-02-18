@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="Referencia visual de Cockpit Networking en Red Hat">
+  <defs>
+    <style>
+      .bg { fill: #f4f6f8; }
+      .panel { fill: #ffffff; stroke: #d0d7de; stroke-width: 2; }
+      .top { fill: #151a1e; }
+      .menu { fill: #24292f; }
+      .menu-item { fill: #2f363d; }
+      .menu-item-active { fill: #004080; }
+      .card { fill: #f9fafb; stroke: #c7d2da; stroke-width: 1.5; }
+      .title { font: 700 26px Arial, sans-serif; fill: #111827; }
+      .text { font: 15px Arial, sans-serif; fill: #1f2937; }
+      .muted { font: 13px Arial, sans-serif; fill: #4b5563; }
+      .ok { fill: #16a34a; }
+      .warn { fill: #d97706; }
+      .line { stroke: #94a3b8; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1280" height="720"/>
+  <rect class="panel" x="24" y="24" width="1232" height="672" rx="10"/>
+
+  <rect class="top" x="24" y="24" width="1232" height="58" rx="10"/>
+  <text x="52" y="61" class="text" fill="#ffffff">Red Hat Web Console (Cockpit) - Networking</text>
+
+  <rect class="menu" x="24" y="82" width="250" height="614"/>
+  <rect class="menu-item" x="42" y="126" width="214" height="40" rx="6"/>
+  <text x="58" y="152" class="text" fill="#e5e7eb">Overview</text>
+  <rect class="menu-item-active" x="42" y="178" width="214" height="40" rx="6"/>
+  <text x="58" y="204" class="text" fill="#ffffff">Networking</text>
+  <rect class="menu-item" x="42" y="230" width="214" height="40" rx="6"/>
+  <text x="58" y="256" class="text" fill="#e5e7eb">Services</text>
+  <rect class="menu-item" x="42" y="282" width="214" height="40" rx="6"/>
+  <text x="58" y="308" class="text" fill="#e5e7eb">Logs</text>
+
+  <text x="304" y="136" class="title">Network Interfaces</text>
+  <text x="304" y="160" class="muted">Referencia visual local para clase (la captura oficial puede no renderizar por hotlink).</text>
+
+  <rect class="card" x="304" y="190" width="920" height="140" rx="8"/>
+  <text x="328" y="225" class="text">ens160</text>
+  <text x="328" y="250" class="muted">IPv4: 192.168.56.20/24</text>
+  <text x="328" y="272" class="muted">Gateway: 192.168.56.1</text>
+  <circle class="ok" cx="1160" cy="230" r="8"/>
+  <text x="1178" y="236" class="muted">Connected</text>
+  <line class="line" x1="328" y1="288" x2="1188" y2="288"/>
+  <text x="328" y="314" class="muted">DNS: 1.1.1.1, 8.8.8.8</text>
+
+  <rect class="card" x="304" y="350" width="920" height="140" rx="8"/>
+  <text x="328" y="385" class="text">ens224</text>
+  <text x="328" y="410" class="muted">IPv4: not configured</text>
+  <text x="328" y="432" class="muted">Gateway: -</text>
+  <circle class="warn" cx="1160" cy="390" r="8"/>
+  <text x="1178" y="396" class="muted">Disconnected</text>
+  <line class="line" x1="328" y1="448" x2="1188" y2="448"/>
+  <text x="328" y="474" class="muted">Suggested action: assign profile with nmcli</text>
+
+  <rect class="card" x="304" y="510" width="920" height="150" rx="8"/>
+  <text x="328" y="545" class="text">Quick checks</text>
+  <text x="328" y="572" class="muted">nmcli device status | nmcli connection show | ip route | resolv.conf</text>
+  <text x="328" y="596" class="muted">Flujo recomendado: interfaz -> perfil -> ruta -> DNS -> servicio</text>
+  <text x="328" y="626" class="muted">Fuente oficial: docs.redhat.com / access.redhat.com</text>
+</svg>

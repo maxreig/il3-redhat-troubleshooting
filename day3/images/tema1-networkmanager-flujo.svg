@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420" role="img" aria-label="Flujo de diagnostico con NetworkManager y nmcli">
+  <defs>
+    <style>
+      .title { font: 700 24px Arial, sans-serif; fill: #1f2937; }
+      .subtitle { font: 500 14px Arial, sans-serif; fill: #374151; }
+      .label { font: 600 16px Arial, sans-serif; fill: #111827; }
+      .text { font: 14px Arial, sans-serif; fill: #1f2937; }
+      .box-a { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .box-b { fill: #ecfccb; stroke: #65a30d; stroke-width: 2; }
+      .box-c { fill: #fef3c7; stroke: #d97706; stroke-width: 2; }
+      .box-d { fill: #fee2e2; stroke: #dc2626; stroke-width: 2; }
+      .box-e { fill: #ede9fe; stroke: #7c3aed; stroke-width: 2; }
+      .arrow { stroke: #4b5563; stroke-width: 2.5; fill: none; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#4b5563"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1100" height="420" fill="#f8fafc"/>
+  <text x="32" y="42" class="title">NetworkManager + nmcli: secuencia de diagnostico rapido</text>
+  <text x="32" y="66" class="subtitle">Objetivo: detectar si el fallo es interfaz, perfil, ruta o DNS</text>
+
+  <rect x="30" y="105" width="190" height="95" rx="12" class="box-a"/>
+  <text x="46" y="133" class="label">1) Interfaz</text>
+  <text x="46" y="158" class="text">nmcli device status</text>
+  <text x="46" y="178" class="text">ip a</text>
+
+  <rect x="245" y="105" width="190" height="95" rx="12" class="box-b"/>
+  <text x="261" y="133" class="label">2) Perfil</text>
+  <text x="261" y="158" class="text">nmcli connection show</text>
+  <text x="261" y="178" class="text">nmcli connection up</text>
+
+  <rect x="460" y="105" width="190" height="95" rx="12" class="box-c"/>
+  <text x="476" y="133" class="label">3) Ruta</text>
+  <text x="476" y="158" class="text">ip route</text>
+  <text x="476" y="178" class="text">ping gateway</text>
+
+  <rect x="675" y="105" width="190" height="95" rx="12" class="box-e"/>
+  <text x="691" y="133" class="label">4) DNS</text>
+  <text x="691" y="158" class="text">cat /etc/resolv.conf</text>
+  <text x="691" y="178" class="text">ping redhat.com</text>
+
+  <rect x="890" y="105" width="180" height="95" rx="12" class="box-b"/>
+  <text x="906" y="133" class="label">5) Servicio</text>
+  <text x="906" y="158" class="text">curl / ssh / nc</text>
+  <text x="906" y="178" class="text">validacion final</text>
+
+  <path d="M220 152 L245 152" class="arrow"/>
+  <path d="M435 152 L460 152" class="arrow"/>
+  <path d="M650 152 L675 152" class="arrow"/>
+  <path d="M865 152 L890 152" class="arrow"/>
+
+  <rect x="30" y="250" width="340" height="130" rx="12" class="box-d"/>
+  <text x="46" y="278" class="label">Si falla en paso 1 o 2</text>
+  <text x="46" y="302" class="text">- Revisar enlace fisico/virtual (UP/DOWN)</text>
+  <text x="46" y="322" class="text">- Corregir perfil activo en la interfaz correcta</text>
+  <text x="46" y="342" class="text">- Reaplicar con nmcli connection up</text>
+
+  <rect x="390" y="250" width="340" height="130" rx="12" class="box-d"/>
+  <text x="406" y="278" class="label">Si falla en paso 3</text>
+  <text x="406" y="302" class="text">- Falta gateway o red mal definida</text>
+  <text x="406" y="322" class="text">- Verificar mascara y ruta por defecto</text>
+  <text x="406" y="342" class="text">- Comprobar salida con ping a gateway</text>
+
+  <rect x="750" y="250" width="320" height="130" rx="12" class="box-d"/>
+  <text x="766" y="278" class="label">Si falla en paso 4 o 5</text>
+  <text x="766" y="302" class="text">- DNS incorrecto o no alcanzable</text>
+  <text x="766" y="322" class="text">- Firewall remoto/local bloqueando servicio</text>
+  <text x="766" y="342" class="text">- Revisar puerto destino y ACLs</text>
+</svg>

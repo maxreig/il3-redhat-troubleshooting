@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360" role="img" aria-label="Flujo instalacion RHEL 8">
+  <defs><style>.t{font:700 22px Arial,sans-serif;fill:#111827}.s{font:14px Arial,sans-serif;fill:#1f2937}.b{fill:#fff;stroke:#94a3b8;stroke-width:2}</style></defs>
+  <rect width="1000" height="360" fill="#f8fafc"/>
+  <text x="26" y="38" class="t">Instalacion RHEL 8: flujo minimo recomendado</text>
+  <rect x="30" y="80" width="180" height="80" rx="10" class="b"/><text x="46" y="114" class="s">1) ISO + VM</text><text x="46" y="136" class="s">CPU/RAM/DISCO</text>
+  <rect x="230" y="80" width="180" height="80" rx="10" class="b"/><text x="246" y="114" class="s">2) Anaconda</text><text x="246" y="136" class="s">GUI o texto</text>
+  <rect x="430" y="80" width="180" height="80" rx="10" class="b"/><text x="446" y="114" class="s">3) Red + host</text><text x="446" y="136" class="s">particionado</text>
+  <rect x="630" y="80" width="180" height="80" rx="10" class="b"/><text x="646" y="114" class="s">4) Instalar</text><text x="646" y="136" class="s">root/usuario</text>
+  <rect x="830" y="80" width="150" height="80" rx="10" class="b"/><text x="846" y="114" class="s">5) Checks</text><text x="846" y="136" class="s">post-boot</text>
+  <path d="M210 120 L230 120 M410 120 L430 120 M610 120 L630 120 M810 120 L830 120" stroke="#64748b" stroke-width="2"/>
+  <rect x="30" y="200" width="950" height="130" rx="12" class="b"/>
+  <text x="48" y="236" class="s">Checklist: release, hostname, IP/ruta, memoria, disco, fecha/hora.</text>
+  <text x="48" y="262" class="s">Si algo falla al inicio, corrige ahora antes de pasar a permisos y usuarios.</text>
+  <text x="48" y="288" class="s">Evita arrastrar errores base al resto de labs.</text>
+</svg>

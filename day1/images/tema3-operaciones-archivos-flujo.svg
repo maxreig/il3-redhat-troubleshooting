@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360" role="img" aria-label="Operaciones de archivos">
+  <defs><style>.t{font:700 22px Arial,sans-serif;fill:#111827}.s{font:14px Arial,sans-serif;fill:#1f2937}.c{fill:#fff;stroke:#94a3b8;stroke-width:2}</style></defs>
+  <rect width="1000" height="360" fill="#f8fafc"/>
+  <text x="24" y="38" class="t">Operaciones basicas: touch, cp, mv, rm</text>
+  <rect x="40" y="80" width="190" height="80" rx="10" class="c"/><text x="58" y="114" class="s">touch archivo</text><text x="58" y="136" class="s">crea fichero vacio</text>
+  <rect x="280" y="80" width="190" height="80" rx="10" class="c"/><text x="298" y="114" class="s">cp origen destino</text><text x="298" y="136" class="s">duplica contenido</text>
+  <rect x="520" y="80" width="190" height="80" rx="10" class="c"/><text x="538" y="114" class="s">mv origen destino</text><text x="538" y="136" class="s">mueve/renombra</text>
+  <rect x="760" y="80" width="190" height="80" rx="10" class="c"/><text x="778" y="114" class="s">rm archivo</text><text x="778" y="136" class="s">elimina</text>
+  <path d="M230 120 L280 120 M470 120 L520 120 M710 120 L760 120" stroke="#64748b" stroke-width="2"/>
+  <rect x="40" y="200" width="910" height="130" rx="12" class="c"/>
+  <text x="58" y="236" class="s">Buenas practicas: validar ruta con pwd, listar objetivo con ls y evitar rm -rf a ciegas.</text>
+  <text x="58" y="262" class="s">Para directorios, usa cp -a para preservar permisos/tiempos/propietarios.</text>
+  <text x="58" y="288" class="s">Si una copia falla: revisar espacio y permisos en origen/destino.</text>
+</svg>

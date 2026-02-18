@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="380" viewBox="0 0 1000 380" role="img" aria-label="Gestion de usuarios y grupos">
+  <defs><style>.t{font:700 22px Arial,sans-serif;fill:#111827}.s{font:14px Arial,sans-serif;fill:#1f2937}.n{font:600 15px Arial,sans-serif;fill:#0f172a}.c{fill:#fff;stroke:#94a3b8;stroke-width:2}</style></defs>
+  <rect width="1000" height="380" fill="#f8fafc"/>
+  <text x="24" y="38" class="t">Usuarios y grupos: flujo operativo basico</text>
+  <rect x="40" y="80" width="170" height="80" rx="10" class="c"/><text x="58" y="114" class="s">groupadd dev</text><text x="58" y="136" class="s">crea grupo</text>
+  <rect x="240" y="80" width="170" height="80" rx="10" class="c"/><text x="258" y="114" class="s">useradd ana</text><text x="258" y="136" class="s">crea usuario</text>
+  <rect x="440" y="80" width="170" height="80" rx="10" class="c"/><text x="458" y="114" class="s">usermod -aG dev</text><text x="458" y="136" class="s">agrega grupo</text>
+  <rect x="640" y="80" width="170" height="80" rx="10" class="c"/><text x="658" y="114" class="s">passwd ana</text><text x="658" y="136" class="s">define clave</text>
+  <rect x="840" y="80" width="130" height="80" rx="10" class="c"/><text x="858" y="114" class="s">id ana</text><text x="858" y="136" class="s">verifica</text>
+  <path d="M210 120 L240 120 M410 120 L440 120 M610 120 L640 120 M810 120 L840 120" stroke="#64748b" stroke-width="2"/>
+  <rect x="40" y="205" width="930" height="145" rx="12" class="c"/>
+  <text x="58" y="238" class="n">Ficheros clave</text>
+  <text x="58" y="264" class="s">/etc/passwd: usuario, UID, GID, home, shell</text>
+  <text x="58" y="288" class="s">/etc/shadow: hash de password y expiracion (solo root)</text>
+  <text x="58" y="312" class="s">/etc/group: grupos y miembros secundarios</text>
+  <text x="58" y="336" class="s">Regla: siempre validar cambios con id y getent.</text>
+</svg>
