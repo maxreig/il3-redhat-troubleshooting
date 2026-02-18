@@ -22,6 +22,11 @@ Aquí encontrarás **material por sesión**, **chuletas de comandos**, **labs** 
 - 🧰 [Comandos Día 2](day2/comandos-dia2.md)
 - 🧪 [Labs Día 2](day2/labs-dia2.md)
 
+### Día 3
+- 📘 [Día 3 – Índice](day3/Index.md)
+- 🧰 [Comandos Día 3](day3/comandos-dia3.md)
+- 🧪 [Labs Día 3](day3/labs-dia3.md)
+
 ## Objetivo del curso
 
 Al finalizar el curso, el alumno será capaz de:
