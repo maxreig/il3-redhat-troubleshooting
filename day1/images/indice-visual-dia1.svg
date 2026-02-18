@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="430" viewBox="0 0 1100 430" role="img" aria-label="Indice visual Dia 1">
+  <defs>
+    <style>
+      .t { font: 700 24px Arial, sans-serif; fill: #1f2937; }
+      .b { font: 600 15px Arial, sans-serif; fill: #111827; }
+      .s { font: 14px Arial, sans-serif; fill: #374151; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .line { stroke: #64748b; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect width="1100" height="430" fill="#f8fafc"/>
+  <text x="28" y="40" class="t">Dia 1: Instalacion, filesystem y usuarios</text>
+  <rect x="28" y="70" width="165" height="92" rx="10" class="card"/><text x="42" y="102" class="b">Tema 1</text><text x="42" y="125" class="s">Instalacion</text><text x="42" y="145" class="s">RHEL 8</text>
+  <rect x="205" y="70" width="165" height="92" rx="10" class="card"/><text x="219" y="102" class="b">Tema 2</text><text x="219" y="125" class="s">Filesystem</text><text x="219" y="145" class="s">Navegacion</text>
+  <rect x="382" y="70" width="165" height="92" rx="10" class="card"/><text x="396" y="102" class="b">Tema 3</text><text x="396" y="125" class="s">Archivos</text><text x="396" y="145" class="s">Operaciones</text>
+  <rect x="559" y="70" width="165" height="92" rx="10" class="card"/><text x="573" y="102" class="b">Tema 4</text><text x="573" y="125" class="s">Permisos</text><text x="573" y="145" class="s">y umask</text>
+  <rect x="736" y="70" width="165" height="92" rx="10" class="card"/><text x="750" y="102" class="b">Tema 5</text><text x="750" y="125" class="s">Editor</text><text x="750" y="145" class="s">vim</text>
+  <rect x="913" y="70" width="165" height="92" rx="10" class="card"/><text x="927" y="102" class="b">Tema 6</text><text x="927" y="125" class="s">Usuarios</text><text x="927" y="145" class="s">y grupos</text>
+  <line x1="193" y1="116" x2="205" y2="116" class="line"/>
+  <line x1="370" y1="116" x2="382" y2="116" class="line"/>
+  <line x1="547" y1="116" x2="559" y2="116" class="line"/>
+  <line x1="724" y1="116" x2="736" y2="116" class="line"/>
+  <line x1="901" y1="116" x2="913" y2="116" class="line"/>
+  <rect x="28" y="205" width="1050" height="190" rx="12" class="card"/>
+  <text x="48" y="245" class="b">Secuencia recomendada de aprendizaje</text>
+  <text x="48" y="275" class="s">1) Instalar y validar base</text>
+  <text x="48" y="300" class="s">2) Orientarte por el sistema de archivos</text>
+  <text x="48" y="325" class="s">3) Operar con archivos con seguridad</text>
+  <text x="48" y="350" class="s">4) Aplicar permisos correctos</text>
+  <text x="430" y="275" class="s">5) Editar configuraciones con vim</text>
+  <text x="430" y="300" class="s">6) Gestionar usuarios/grupos</text>
+  <text x="430" y="325" class="s">7) Cerrar con lab integrado de permisos</text>
+</svg>

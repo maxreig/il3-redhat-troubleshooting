@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360" role="img" aria-label="Modos de vim">
+  <defs><style>.t{font:700 22px Arial,sans-serif;fill:#111827}.s{font:14px Arial,sans-serif;fill:#1f2937}.n{font:600 15px Arial,sans-serif;fill:#0f172a}.c{fill:#fff;stroke:#94a3b8;stroke-width:2}</style></defs>
+  <rect width="1000" height="360" fill="#f8fafc"/>
+  <text x="24" y="38" class="t">Vim: modo supervivencia</text>
+  <rect x="40" y="80" width="250" height="110" rx="10" class="c"/>
+  <text x="58" y="110" class="n">Modo normal</text>
+  <text x="58" y="136" class="s">navegacion y comandos</text>
+  <text x="58" y="162" class="s">Esc vuelve aqui</text>
+  <rect x="375" y="80" width="250" height="110" rx="10" class="c"/>
+  <text x="393" y="110" class="n">Modo insert</text>
+  <text x="393" y="136" class="s">i, a, o para escribir</text>
+  <text x="393" y="162" class="s">Esc para salir</text>
+  <rect x="710" y="80" width="250" height="110" rx="10" class="c"/>
+  <text x="728" y="110" class="n">Modo comando</text>
+  <text x="728" y="136" class="s">:w :q :wq :q!</text>
+  <text x="728" y="162" class="s">/texto + n</text>
+  <path d="M290 136 L375 136 M625 136 L710 136" stroke="#64748b" stroke-width="2"/>
+  <rect x="40" y="225" width="920" height="105" rx="12" class="c"/>
+  <text x="58" y="258" class="s">Flujo recomendado: copia de seguridad -> editar -> guardar -> validar servicio.</text>
+  <text x="58" y="283" class="s">Si algo sale mal: restaurar backup y volver a validar.</text>
+</svg>

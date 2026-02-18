@@ -1,5 +1,7 @@
 # Día 1 – Instalación, sistema de archivos y usuarios
 
+> Ruta recomendada del material del Día 1: [`Index.md`](Index.md)
+
 Bienvenido/a al **Día 1** del curso **Red Hat Enterprise Linux 8 – Diagnostics & Troubleshooting**.  
 El objetivo de esta sesión es que salgas con un **laboratorio funcional** desde el primer día y con la base necesaria para afrontar el troubleshooting del resto del curso.
 

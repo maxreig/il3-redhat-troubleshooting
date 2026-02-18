@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420" role="img" aria-label="Permisos simbolicos y octales">
+  <defs><style>.t{font:700 22px Arial,sans-serif;fill:#111827}.s{font:14px Arial,sans-serif;fill:#1f2937}.n{font:600 15px Arial,sans-serif;fill:#0f172a}.c{fill:#fff;stroke:#94a3b8;stroke-width:2}</style></defs>
+  <rect width="1100" height="420" fill="#f8fafc"/>
+  <text x="24" y="38" class="t">Permisos Linux: simbolico vs octal</text>
+  <rect x="30" y="70" width="500" height="150" rx="12" class="c"/>
+  <text x="50" y="104" class="n">Formato simbolico</text>
+  <text x="50" y="132" class="s">-rwxr-x---</text>
+  <text x="50" y="158" class="s">u: rwx | g: r-x | o: ---</text>
+  <text x="50" y="184" class="s">r=4, w=2, x=1</text>
+  <rect x="570" y="70" width="500" height="150" rx="12" class="c"/>
+  <text x="590" y="104" class="n">Formato octal</text>
+  <text x="590" y="132" class="s">rwx = 7 | r-x = 5 | --- = 0</text>
+  <text x="590" y="158" class="s">rwxr-x--- = 750</text>
+  <text x="590" y="184" class="s">rw-r----- = 640</text>
+  <rect x="30" y="250" width="1040" height="140" rx="12" class="c"/>
+  <text x="50" y="286" class="n">Permisos en directorios (clave de troubleshooting)</text>
+  <text x="50" y="312" class="s">r: listar | w: crear/borrar entradas | x: entrar/atravesar.</text>
+  <text x="50" y="338" class="s">Sin x no hay acceso real, aunque exista r.</text>
+  <text x="50" y="364" class="s">Umask ejemplo 027: archivos 640 y directorios 750.</text>
+</svg>

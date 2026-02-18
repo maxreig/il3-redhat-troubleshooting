@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420" role="img" aria-label="Mapa filesystem Linux">
+  <defs><style>.t{font:700 22px Arial,sans-serif;fill:#111827}.s{font:14px Arial,sans-serif;fill:#1f2937}.n{font:600 15px Arial,sans-serif;fill:#0f172a}.c{fill:#fff;stroke:#94a3b8;stroke-width:2}</style></defs>
+  <rect width="1000" height="420" fill="#f8fafc"/>
+  <text x="24" y="38" class="t">Mapa rapido del filesystem</text>
+  <rect x="430" y="70" width="140" height="56" rx="10" class="c"/><text x="492" y="104" text-anchor="middle" class="n">/</text>
+  <rect x="70" y="180" width="120" height="60" rx="10" class="c"/><text x="130" y="215" text-anchor="middle" class="n">/etc</text>
+  <rect x="220" y="180" width="120" height="60" rx="10" class="c"/><text x="280" y="215" text-anchor="middle" class="n">/var</text>
+  <rect x="370" y="180" width="120" height="60" rx="10" class="c"/><text x="430" y="215" text-anchor="middle" class="n">/home</text>
+  <rect x="520" y="180" width="120" height="60" rx="10" class="c"/><text x="580" y="215" text-anchor="middle" class="n">/tmp</text>
+  <rect x="670" y="180" width="120" height="60" rx="10" class="c"/><text x="730" y="215" text-anchor="middle" class="n">/usr</text>
+  <rect x="820" y="180" width="120" height="60" rx="10" class="c"/><text x="880" y="215" text-anchor="middle" class="n">/opt</text>
+  <path d="M500 126 L130 180 M500 126 L280 180 M500 126 L430 180 M500 126 L580 180 M500 126 L730 180 M500 126 L880 180" stroke="#64748b" stroke-width="2"/>
+  <rect x="40" y="280" width="920" height="110" rx="12" class="c"/>
+  <text x="56" y="314" class="s">Troubleshooting por ruta: config en /etc, logs en /var/log, binarios en /usr/bin o /usr/sbin.</text>
+  <text x="56" y="338" class="s">Si te pierdes: valida pwd, usa ls -lah y apoya con find para ubicar ficheros clave.</text>
+  <text x="56" y="362" class="s">Regla: identifica capa y ruta antes de cambiar nada.</text>
+</svg>
