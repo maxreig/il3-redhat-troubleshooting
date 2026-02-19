@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520" role="img" aria-label="Capas OSI con foco en networking y firewall">
+  <defs>
+    <style>
+      .title { font: 700 24px Arial, sans-serif; fill: #1f2937; }
+      .subtitle { font: 500 14px Arial, sans-serif; fill: #374151; }
+      .layer { font: 700 14px Arial, sans-serif; fill: #111827; }
+      .txt { font: 13px Arial, sans-serif; fill: #1f2937; }
+      .box7 { fill: #fee2e2; stroke: #dc2626; stroke-width: 2; }
+      .box6 { fill: #ffedd5; stroke: #ea580c; stroke-width: 2; }
+      .box5 { fill: #fef3c7; stroke: #d97706; stroke-width: 2; }
+      .box4 { fill: #dcfce7; stroke: #16a34a; stroke-width: 2; }
+      .box3 { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; }
+      .box2 { fill: #e0e7ff; stroke: #4f46e5; stroke-width: 2; }
+      .box1 { fill: #ede9fe; stroke: #7c3aed; stroke-width: 2; }
+      .focus { fill: #f0fdf4; stroke: #15803d; stroke-width: 2; }
+      .warn { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1100" height="520" fill="#f8fafc"/>
+  <text x="32" y="42" class="title">Modelo OSI aplicado a troubleshooting de seguridad</text>
+  <text x="32" y="66" class="subtitle">Networking en Linux: foco practico en capas 3 y 4. Firewall clasico: principalmente capas 3/4.</text>
+
+  <rect x="40" y="95" width="340" height="52" rx="10" class="box7"/>
+  <text x="58" y="126" class="layer">7. Application (HTTP, DNS, SSH app protocols)</text>
+
+  <rect x="40" y="150" width="340" height="52" rx="10" class="box6"/>
+  <text x="58" y="181" class="layer">6. Presentation</text>
+
+  <rect x="40" y="205" width="340" height="52" rx="10" class="box5"/>
+  <text x="58" y="236" class="layer">5. Session</text>
+
+  <rect x="40" y="260" width="340" height="52" rx="10" class="box4"/>
+  <text x="58" y="291" class="layer">4. Transport (TCP/UDP)</text>
+
+  <rect x="40" y="315" width="340" height="52" rx="10" class="box3"/>
+  <text x="58" y="346" class="layer">3. Network (IP, routing)</text>
+
+  <rect x="40" y="370" width="340" height="52" rx="10" class="box2"/>
+  <text x="58" y="401" class="layer">2. Data Link</text>
+
+  <rect x="40" y="425" width="340" height="52" rx="10" class="box1"/>
+  <text x="58" y="456" class="layer">1. Physical</text>
+
+  <rect x="430" y="130" width="300" height="150" rx="12" class="focus"/>
+  <text x="448" y="160" class="layer">Networking (admin Linux)</text>
+  <text x="448" y="186" class="txt">- Interfaz, IP, rutas: Capa 3</text>
+  <text x="448" y="210" class="txt">- Puertos TCP/UDP: Capa 4</text>
+  <text x="448" y="234" class="txt">- Diagnostico: ip, route, ss, ping</text>
+  <text x="448" y="258" class="txt">- Name resolution (DNS) roza capa 7</text>
+
+  <rect x="760" y="130" width="300" height="150" rx="12" class="focus"/>
+  <text x="778" y="160" class="layer">Firewall (firewalld/nftables)</text>
+  <text x="778" y="186" class="txt">- Opera principalmente en capa 3/4</text>
+  <text x="778" y="210" class="txt">- Filtra por IP, red, puerto, protocolo</text>
+  <text x="778" y="234" class="txt">- Puede mapear servicios (http/ssh)</text>
+  <text x="778" y="258" class="txt">- No sustituye controles app (WAF, auth)</text>
+
+  <rect x="430" y="315" width="630" height="145" rx="12" class="warn"/>
+  <text x="448" y="345" class="layer">Regla rapida para clase</text>
+  <text x="448" y="371" class="txt">1) Si falla conectividad: diagnostica primero capas 3/4 (IP, ruta, puerto).</text>
+  <text x="448" y="395" class="txt">2) Si IP/puerto estan bien y la app sigue fallando, sube a capa 7 (servicio, protocolo, permisos app).</text>
+  <text x="448" y="419" class="txt">3) SELinux actua como control adicional del sistema (no es una capa OSI).</text>
+</svg>

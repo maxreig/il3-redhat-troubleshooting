@@ -7,6 +7,7 @@
 nmcli general status
 nmcli device status
 nmcli connection show
+nmcli connection show --active
 
 # Detalle de un perfil
 nmcli connection show "System eth0"
@@ -31,11 +32,14 @@ nmcli connection up "System eth0"
 ## 2) Diagnostico de conectividad
 
 ```bash
+ip link show
+ip -4 a
 ip a
 ip route
 cat /etc/resolv.conf
 ping -c 3 <gateway>
 ping -c 3 8.8.8.8
+getent hosts redhat.com
 ping -c 3 redhat.com
 ss -tulpen
 ```
@@ -99,6 +103,11 @@ getenforce
 sestatus
 ls -lZ /var/www/html
 ps -eZ | grep httpd
+
+# Archivo de configuracion persistente de SELinux
+cat /etc/selinux/config
+# Editar (ejemplo)
+vi /etc/selinux/config
 
 # Restaurar contexto recomendado
 restorecon -Rv /var/www/html

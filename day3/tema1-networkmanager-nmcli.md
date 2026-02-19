@@ -4,6 +4,30 @@
 
 Dominar una base operativa para revisar, ajustar y diagnosticar la red en RHEL/Rocky usando `NetworkManager` y `nmcli`.
 
+## Marco OSI rapido: donde encajan networking y firewall
+
+Para troubleshooting en Linux, piensa asi:
+
+1. **Capa 1 - Fisica (Physical)**: medio fisico y senal (cable, NIC, enlace). Si falla, la interfaz suele estar `DOWN` o sin link.
+1. **Capa 2 - Enlace (Data Link)**: tramas y MAC en la LAN (switch/VLAN). Si falla, hay problemas dentro de la red local.
+1. **Capa 3 - Red (Network)**: direccionamiento IP y rutas. Aqui revisas `ip a` e `ip route`.
+1. **Capa 4 - Transporte (Transport)**: puertos y protocolos `TCP/UDP`. Aqui validas `ss`, `nmap`, `nc/ncat`.
+1. **Capa 5 - Sesion (Session)**: establecimiento/mantenimiento de sesiones entre aplicaciones (ejemplo SSH/TLS session setup).
+1. **Capa 6 - Presentacion (Presentation)**: formato y transformacion de datos (cifrado/encoding/serializacion).
+1. **Capa 7 - Aplicacion (Application)**: servicio final (HTTP, DNS app-layer, API, autenticacion/logica de app).
+
+Relacion practica para este curso:
+
+1. **Networking** (interfaces, IP, rutas, puertos) se trabaja sobre todo en **capas 3 y 4**.
+1. **Firewall** clasico (`firewalld`/`nftables`) filtra principalmente en **capas 3/4** (IP, protocolo, puerto).
+1. Los controles de aplicacion (WAF, logica HTTP avanzada) pertenecen a **capa 7**.
+1. **SELinux no es OSI**: es control MAC del sistema operativo.
+
+![Infografia OSI: networking y firewall](images/tema1-osi-capas-networking.svg)
+
+Referencia externa (infografia OSI):  
+[Cloudflare Learning Center - What is the OSI model?](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/)
+
 ## Resumen para pizarra
 
 1. `NetworkManager` gestiona red por perfiles, no solo por interfaz.
@@ -34,6 +58,8 @@ Conceptos clave:
 1. Perfil activo: configuracion actualmente aplicada sobre un dispositivo.
 
 ![Infografia de flujo con nmcli](images/tema1-networkmanager-flujo.svg)
+
+![Mapa de componentes con daemon network](images/tema1-network-daemon-mapa.svg)
 
 ### Captura oficial de Red Hat (referencia visual)
 
@@ -66,13 +92,12 @@ Ubicacion tipica de perfiles:
 
 ## Flujo mental de troubleshooting de red
 
-1. Ver si la interfaz existe y esta `UP`.
-1. Ver si tiene perfil activo en `NetworkManager`.
-1. Comprobar direccion IP, gateway y DNS.
-1. Validar conectividad por capas:
-1. IP local (gateway)
-1. red externa (IP publica o salto intermedio)
-1. resolucion DNS (nombre)
+1. Ver si la interfaz existe y esta `UP` -> `ip link show` (o `nmcli device status`).
+1. Ver si tiene perfil activo en `NetworkManager` -> `nmcli connection show --active`.
+1. Comprobar direccion IP, gateway y DNS -> `ip -4 a && ip route && cat /etc/resolv.conf`.
+1. Validar IP local (gateway) -> `ping -c 3 <gateway>`.
+1. Validar red externa por IP -> `ping -c 3 8.8.8.8` (o una IP corporativa).
+1. Validar resolucion DNS (nombre) -> `getent hosts redhat.com` o `ping -c 3 redhat.com`.
 
 Regla de oro: no saltar pasos.  
 Si no hay conectividad al gateway, analizar DNS no aporta valor y retrasa el diagnostico.
@@ -290,6 +315,86 @@ No todos los entornos usan NetworkManager como herramienta principal:
 1. `wicked` (SUSE).
 
 Idea clave: cambia la herramienta, pero el diagnostico por capas (interfaz -> IP -> ruta -> DNS) se mantiene.
+
+## Si NO usas NetworkManager: daemon `network` (enfoque legacy)
+
+Este modo aplica sobre todo a entornos legacy con `network-scripts` instalados.  
+El cambio principal es que ya no gestionas perfiles con `nmcli`; gestionas archivos `ifcfg-*` y reinicias el servicio `network`.
+
+### Archivos que se tocan habitualmente
+
+- `/etc/sysconfig/network`: parametros globales legacy (ejemplo: `NETWORKING=yes`, hostname en ciertos entornos).
+- `/etc/sysconfig/network-scripts/ifcfg-<interfaz>`: configuracion principal por interfaz (`BOOTPROTO`, `IPADDR`, `PREFIX` o `NETMASK`, `GATEWAY`, `DNS1`, `ONBOOT`).
+- `/etc/sysconfig/network-scripts/route-<interfaz>`: rutas estaticas por interfaz.
+- `/etc/sysconfig/network-scripts/rule-<interfaz>`: reglas avanzadas de policy routing (cuando aplica).
+- `/etc/resolv.conf`: resolucion DNS efectiva del sistema.
+- `/etc/hosts`: resolucion local estatica para pruebas o dependencias internas.
+
+### Flujo de trabajo (sin NetworkManager)
+
+1. Editar `ifcfg-<interfaz>` con los parametros de red.
+1. Reiniciar red con `systemctl restart network` (o `ifdown/ifup` segun politica).
+1. Validar `ip a`, `ip route`, `cat /etc/resolv.conf`.
+1. Probar capas: gateway -> IP externa -> DNS -> servicio final.
+
+![Flujo operativo con ifcfg y network service](images/tema1-network-daemon-flujo.svg)
+
+### Plantillas tipicas de `ifcfg-*`
+
+#### DHCP (legacy)
+
+```ini
+TYPE=Ethernet
+DEVICE=ens192
+ONBOOT=yes
+BOOTPROTO=dhcp
+```
+
+#### IP estatica (legacy)
+
+```ini
+TYPE=Ethernet
+DEVICE=ens192
+ONBOOT=yes
+BOOTPROTO=none
+IPADDR=192.168.56.20
+PREFIX=24
+GATEWAY=192.168.56.1
+DNS1=1.1.1.1
+DNS2=8.8.8.8
+DEFROUTE=yes
+```
+
+### Comandos clave con daemon `network`
+
+```bash
+# Ver estado del servicio de red legacy
+systemctl status network
+
+# Levantar/bajar interfaz (si el entorno mantiene ifup/ifdown)
+ifdown ens192
+ifup ens192
+
+# Reiniciar toda la red legacy
+systemctl restart network
+
+# Evidencia operativa
+ip a
+ip route
+cat /etc/resolv.conf
+```
+
+### Diagnostico rapido cuando usas `network`
+
+- Interfaz no sube: revisar `ONBOOT=yes`, `DEVICE=` correcto y nombre real de interfaz.
+- Hay IP pero no salida: revisar `GATEWAY` y `ip route`.
+- Salida por IP funciona pero nombres no: revisar `DNS1/DNS2` y `resolv.conf`.
+- Tras reinicio vuelve mal: validar que el fichero persistente correcto es `ifcfg-<interfaz>`.
+
+### Nota de compatibilidad (RHEL/Rocky)
+
+En versiones modernas, `NetworkManager` suele ser el camino recomendado por defecto.  
+El modo `network` se usa sobre todo por compatibilidad legacy o requisitos concretos de ciertas plataformas.
 
 ## Recomendaciones de operacion segura
 
