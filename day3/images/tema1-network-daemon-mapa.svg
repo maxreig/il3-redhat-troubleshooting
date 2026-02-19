@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="480" viewBox="0 0 1100 480" role="img" aria-label="Mapa de red sin NetworkManager usando daemon network y ifcfg">
+  <defs>
+    <style>
+      .title { font: 700 24px Arial, sans-serif; fill: #1f2937; }
+      .subtitle { font: 500 14px Arial, sans-serif; fill: #374151; }
+      .label { font: 700 16px Arial, sans-serif; fill: #111827; }
+      .text { font: 14px Arial, sans-serif; fill: #1f2937; }
+      .box-a { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .box-b { fill: #ecfccb; stroke: #65a30d; stroke-width: 2; }
+      .box-c { fill: #fef3c7; stroke: #d97706; stroke-width: 2; }
+      .box-d { fill: #fee2e2; stroke: #dc2626; stroke-width: 2; }
+      .box-e { fill: #ede9fe; stroke: #7c3aed; stroke-width: 2; }
+      .arrow { stroke: #4b5563; stroke-width: 2.5; fill: none; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#4b5563"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1100" height="480" fill="#f8fafc"/>
+  <text x="32" y="42" class="title">Modo legacy: daemon network + ifcfg</text>
+  <text x="32" y="66" class="subtitle">Que ficheros tocas y como se aplican al sistema en runtime</text>
+
+  <rect x="30" y="100" width="320" height="140" rx="12" class="box-a"/>
+  <text x="46" y="128" class="label">Archivos por interfaz</text>
+  <text x="46" y="152" class="text">/etc/sysconfig/network-scripts/ifcfg-ens192</text>
+  <text x="46" y="174" class="text">/etc/sysconfig/network-scripts/route-ens192</text>
+  <text x="46" y="196" class="text">/etc/sysconfig/network-scripts/rule-ens192</text>
+  <text x="46" y="218" class="text">(persistencia de IP, rutas y policy routing)</text>
+
+  <rect x="390" y="100" width="300" height="140" rx="12" class="box-b"/>
+  <text x="406" y="128" class="label">Servicio de red</text>
+  <text x="406" y="152" class="text">systemctl restart network</text>
+  <text x="406" y="174" class="text">ifup / ifdown (segun entorno)</text>
+  <text x="406" y="196" class="text">Carga ifcfg-* y aplica estado runtime</text>
+
+  <rect x="730" y="100" width="340" height="140" rx="12" class="box-c"/>
+  <text x="746" y="128" class="label">Estado runtime efectivo</text>
+  <text x="746" y="152" class="text">ip a            -> direccion IP en interfaz</text>
+  <text x="746" y="174" class="text">ip route        -> ruta por defecto y rutas estaticas</text>
+  <text x="746" y="196" class="text">/etc/resolv.conf -> DNS activo</text>
+
+  <path d="M350 170 L390 170" class="arrow"/>
+  <path d="M690 170 L730 170" class="arrow"/>
+
+  <rect x="30" y="280" width="340" height="160" rx="12" class="box-e"/>
+  <text x="46" y="308" class="label">Ficheros globales</text>
+  <text x="46" y="332" class="text">/etc/sysconfig/network</text>
+  <text x="46" y="354" class="text">/etc/resolv.conf</text>
+  <text x="46" y="376" class="text">/etc/hosts</text>
+  <text x="46" y="398" class="text">(hostname, DNS, overrides locales)</text>
+
+  <rect x="410" y="280" width="660" height="160" rx="12" class="box-d"/>
+  <text x="426" y="308" class="label">Errores tipicos</text>
+  <text x="426" y="332" class="text">1) DEVICE mal definido o interfaz renombrada -> la configuracion no aplica.</text>
+  <text x="426" y="354" class="text">2) ONBOOT=no -> tras reboot la interfaz no levanta.</text>
+  <text x="426" y="376" class="text">3) GATEWAY ausente -> hay LAN pero no salida a otras redes.</text>
+  <text x="426" y="398" class="text">4) DNS incoherente entre ifcfg y resolv.conf -> fallo por nombre.</text>
+  <text x="426" y="420" class="text">5) Editaste otro ifcfg distinto al nombre real de la NIC.</text>
+</svg>

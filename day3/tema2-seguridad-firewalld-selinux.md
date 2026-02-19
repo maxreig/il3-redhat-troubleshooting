@@ -4,6 +4,20 @@
 
 Aplicar una capa minima de seguridad operativa en RHEL/Rocky: exponer solo lo necesario en red y entender bloqueos basicos de SELinux.
 
+## Marco OSI rapido: donde encajan networking y firewall
+
+Para troubleshooting en Linux, piensa asi:
+
+1. **Networking** (IP, rutas, puertos) trabaja sobre todo en capas **3 (Network)** y **4 (Transport)**.
+1. **Firewall** clasico (`firewalld`/`nftables`) filtra principalmente en capas **3/4** (IP, protocolo, puerto).
+1. Los controles de aplicacion (ejemplo WAF) ya entran en capa **7**.
+1. **SELinux no es OSI**: es control MAC del sistema operativo.
+
+![Infografia OSI: networking y firewall](images/tema2-osi-capas-network-firewall.svg)
+
+Referencia externa (infografia OSI):  
+[Cloudflare Learning Center - What is the OSI model?](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/)
+
 ## Resumen para pizarra
 
 1. `firewalld` define que entra/sale por zonas; SELinux define que puede hacer cada proceso.
@@ -18,13 +32,13 @@ Aplicar una capa minima de seguridad operativa en RHEL/Rocky: exponer solo lo ne
 
 Gestion de firewall por zonas en Cockpit:
 
-![Red Hat Cockpit - firewall](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Managing_systems_using_the_RHEL_7_web_console-en-US/images/e1f5717db0598f4b55db66700ec36942/cockpit-fw.png)
+![Cockpit firewall (referencia local)](images/redhat-cockpit-firewall-referencia-local.svg)
 
 Alta de un servicio en firewall desde la consola web:
 
-![Red Hat Cockpit - add firewall service](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Managing_systems_using_the_RHEL_7_web_console-en-US/images/2ba0e8f95c7f26f625921ba2678b2f4e/cockpit-add-service.png)
+![Cockpit add firewall service (referencia local)](images/redhat-cockpit-firewall-add-service-referencia-local.svg)
 
-Si no se visualizan en tu IDE, abre aqui:  
+Si quieres comparar con capturas oficiales remotas, abre aqui:  
 [Cockpit firewall (Red Hat)](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Managing_systems_using_the_RHEL_7_web_console-en-US/images/e1f5717db0598f4b55db66700ec36942/cockpit-fw.png)  
 [Cockpit add firewall service (Red Hat)](https://access.redhat.com/webassets/avalon/d/Red_Hat_Enterprise_Linux-7-Managing_systems_using_the_RHEL_7_web_console-en-US/images/2ba0e8f95c7f26f625921ba2678b2f4e/cockpit-add-service.png)
 
@@ -57,6 +71,10 @@ Una zona representa nivel de confianza del origen de red:
 
 En troubleshooting es comun tener reglas correctas en la zona equivocada.  
 Siempre valida zona activa e interfaces asociadas antes de abrir puertos.
+
+### Captura del servicio (referencia local)
+
+![Estado de firewalld y puertos (referencia local)](images/tema2-firewalld-servicio-captura.svg)
 
 ### Comandos base
 
@@ -94,6 +112,26 @@ firewall-cmd --zone=public --list-all
 firewall-cmd --zone=public --list-services
 firewall-cmd --zone=public --list-ports
 ```
+
+### Ver puertos en vivo (local y desde cliente)
+
+```bash
+# En el servidor: puertos realmente en escucha
+ss -tulpen
+
+# Desde un cliente (si tienes nmap): valida puertos expuestos
+nmap -p 22,80,443,8080 <IP_DE_LA_VM>
+
+# Alternativa si no tienes nmap (test puntual TCP)
+nc -zv <IP_DE_LA_VM> 80
+nc -zv <IP_DE_LA_VM> 8080
+```
+
+Interpretacion rapida:
+
+1. Si `ss` no muestra el puerto, el servicio no esta escuchando.
+1. Si `ss` lo muestra pero `nmap` sale `filtered`, suele ser firewall/ruta.
+1. Si `nmap` sale `closed`, hay conectividad pero no servicio en ese puerto.
 
 ### Reglas avanzadas basicas (rich rules)
 

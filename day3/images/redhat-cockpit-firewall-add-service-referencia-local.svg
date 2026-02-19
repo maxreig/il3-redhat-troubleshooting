@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="360" viewBox="0 0 1100 360" role="img" aria-label="Referencia local de alta de servicio en firewall desde Cockpit">
+  <defs>
+    <style>
+      .title { font: 700 22px Arial, sans-serif; fill: #1f2937; }
+      .sub { font: 500 13px Arial, sans-serif; fill: #374151; }
+      .h { font: 700 14px Arial, sans-serif; fill: #111827; }
+      .t { font: 13px Arial, sans-serif; fill: #1f2937; }
+      .panel { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; }
+      .input { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.2; }
+      .btn { fill: #dbeafe; stroke: #2563eb; stroke-width: 1.5; }
+      .ok { fill: #dcfce7; stroke: #16a34a; stroke-width: 1.5; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1100" height="360" fill="#f1f5f9"/>
+  <text x="28" y="36" class="title">Cockpit Add Service - referencia local (esquema)</text>
+  <text x="28" y="58" class="sub">Dialogo representativo para alta de servicio/puerto en zona firewall.</text>
+
+  <rect x="210" y="84" width="680" height="240" rx="12" class="panel"/>
+  <text x="236" y="116" class="h">Add services to zone: public</text>
+
+  <text x="236" y="148" class="t">Service</text>
+  <rect x="236" y="156" width="300" height="34" rx="6" class="input"/>
+  <text x="248" y="178" class="t">http</text>
+
+  <text x="236" y="214" class="t">or Custom port</text>
+  <rect x="236" y="222" width="180" height="34" rx="6" class="input"/>
+  <text x="248" y="244" class="t">8080/tcp</text>
+
+  <rect x="566" y="156" width="150" height="34" rx="6" class="btn"/>
+  <text x="606" y="178" class="t">Add</text>
+
+  <rect x="566" y="222" width="150" height="34" rx="6" class="btn"/>
+  <text x="594" y="244" class="t">Add port</text>
+
+  <rect x="236" y="274" width="480" height="34" rx="6" class="ok"/>
+  <text x="248" y="296" class="t">Tip: en CLI equivale a --permanent + --reload</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="500" viewBox="0 0 1100 500" role="img" aria-label="Capas OSI con foco en networking y firewalld para tema 1">
+  <defs>
+    <style>
+      .title { font: 700 24px Arial, sans-serif; fill: #1f2937; }
+      .subtitle { font: 500 14px Arial, sans-serif; fill: #374151; }
+      .layer { font: 700 14px Arial, sans-serif; fill: #111827; }
+      .text { font: 13px Arial, sans-serif; fill: #1f2937; }
+      .box7 { fill: #fee2e2; stroke: #dc2626; stroke-width: 2; }
+      .box6 { fill: #ffedd5; stroke: #ea580c; stroke-width: 2; }
+      .box5 { fill: #fef3c7; stroke: #d97706; stroke-width: 2; }
+      .box4 { fill: #dcfce7; stroke: #16a34a; stroke-width: 2; }
+      .box3 { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; }
+      .box2 { fill: #e0e7ff; stroke: #4f46e5; stroke-width: 2; }
+      .box1 { fill: #ede9fe; stroke: #7c3aed; stroke-width: 2; }
+      .focus { fill: #ecfeff; stroke: #0891b2; stroke-width: 2; }
+      .note { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1100" height="500" fill="#f8fafc"/>
+  <text x="32" y="42" class="title">Modelo OSI para troubleshooting de red (Tema 1)</text>
+  <text x="32" y="66" class="subtitle">En administracion Linux, la mayor parte del diagnostico diario cae en capas 3 y 4.</text>
+
+  <rect x="40" y="96" width="350" height="48" rx="10" class="box7"/>
+  <text x="56" y="126" class="layer">7. Application</text>
+
+  <rect x="40" y="148" width="350" height="48" rx="10" class="box6"/>
+  <text x="56" y="178" class="layer">6. Presentation</text>
+
+  <rect x="40" y="200" width="350" height="48" rx="10" class="box5"/>
+  <text x="56" y="230" class="layer">5. Session</text>
+
+  <rect x="40" y="252" width="350" height="48" rx="10" class="box4"/>
+  <text x="56" y="282" class="layer">4. Transport (TCP/UDP)</text>
+
+  <rect x="40" y="304" width="350" height="48" rx="10" class="box3"/>
+  <text x="56" y="334" class="layer">3. Network (IP / routing)</text>
+
+  <rect x="40" y="356" width="350" height="48" rx="10" class="box2"/>
+  <text x="56" y="386" class="layer">2. Data Link</text>
+
+  <rect x="40" y="408" width="350" height="48" rx="10" class="box1"/>
+  <text x="56" y="438" class="layer">1. Physical</text>
+
+  <rect x="430" y="130" width="300" height="140" rx="12" class="focus"/>
+  <text x="448" y="160" class="layer">Networking (tema 1)</text>
+  <text x="448" y="186" class="text">- Interfaces, IP y rutas: capa 3</text>
+  <text x="448" y="210" class="text">- Puertos TCP/UDP: capa 4</text>
+  <text x="448" y="234" class="text">- Comandos: ip, route, ss, ping</text>
+
+  <rect x="760" y="130" width="300" height="140" rx="12" class="focus"/>
+  <text x="778" y="160" class="layer">Firewall (referencia)</text>
+  <text x="778" y="186" class="text">- Opera principalmente en 3/4</text>
+  <text x="778" y="210" class="text">- Filtra IP, protocolo y puerto</text>
+  <text x="778" y="234" class="text">- Capa 7 ya es logica de aplicacion</text>
+
+  <rect x="430" y="300" width="630" height="150" rx="12" class="note"/>
+  <text x="448" y="330" class="layer">Regla operativa de troubleshooting</text>
+  <text x="448" y="356" class="text">1) Primero valida enlace/interfaz, IP, rutas y puertos (L3/L4).</text>
+  <text x="448" y="380" class="text">2) Si eso esta correcto, sube a DNS y comportamiento del servicio.</text>
+  <text x="448" y="404" class="text">3) Evita saltar pasos: reduce tiempo y falsos diagnosticos.</text>
+</svg>

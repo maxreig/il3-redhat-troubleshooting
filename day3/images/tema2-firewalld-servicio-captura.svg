@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420" role="img" aria-label="Captura referencial de estado de firewalld y puertos permitidos">
+  <defs>
+    <style>
+      .title { font: 700 22px Arial, sans-serif; fill: #1f2937; }
+      .sub { font: 500 13px Arial, sans-serif; fill: #374151; }
+      .term { fill: #0f172a; stroke: #334155; stroke-width: 1.5; }
+      .mono { font: 13px 'Courier New', monospace; fill: #e2e8f0; }
+      .ok { fill: #22c55e; }
+      .warn { fill: #f59e0b; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1100" height="420" fill="#f8fafc"/>
+  <text x="28" y="36" class="title">firewalld en ejecucion: referencia visual</text>
+  <text x="28" y="58" class="sub">Simulacion didactica de comandos basicos para validar servicio, zonas y puertos.</text>
+
+  <rect x="28" y="82" width="1044" height="310" rx="10" class="term"/>
+
+  <text x="48" y="114" class="mono">$ systemctl status firewalld --no-pager</text>
+  <circle cx="58" cy="136" r="5" class="ok"/>
+  <text x="72" y="141" class="mono">Active: active (running)</text>
+  <text x="48" y="164" class="mono">$ firewall-cmd --get-active-zones</text>
+  <text x="72" y="188" class="mono">public</text>
+  <text x="72" y="210" class="mono">  interfaces: ens192</text>
+
+  <text x="48" y="240" class="mono">$ firewall-cmd --zone=public --list-services</text>
+  <text x="72" y="264" class="mono">ssh http https</text>
+
+  <text x="48" y="292" class="mono">$ firewall-cmd --zone=public --list-ports</text>
+  <text x="72" y="316" class="mono">8080/tcp</text>
+
+  <text x="48" y="344" class="mono">$ ss -tulpen | grep -E ':80|:8080'</text>
+  <circle cx="58" cy="366" r="5" class="warn"/>
+  <text x="72" y="371" class="mono">tcp LISTEN ... :80 ...</text>
+</svg>

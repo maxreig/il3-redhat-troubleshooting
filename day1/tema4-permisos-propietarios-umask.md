@@ -35,6 +35,28 @@ Interpretacion:
 1. `r-x` -> grupo: lee y ejecuta.
 1. `---` -> otros: sin permisos.
 
+## Leer una linea real de `ls -l` (columna por columna)
+
+Ejemplo:
+
+```text
+drwxr-xr-x. 2 maxreig maxreig 6 Feb 16 21:41 Videos
+```
+
+Interpretacion:
+
+1. `d` -> tipo de archivo: `d` significa directorio.
+1. `rwx` -> permisos del propietario (owner): puede leer, escribir y entrar (`x`) al directorio.
+1. `r-x` -> permisos del grupo: puede leer y entrar, pero no escribir.
+1. `r-x` -> permisos de otros: puede leer y entrar, pero no escribir.
+1. `.` (punto tras permisos) -> indica que hay contexto de seguridad extendido (habitualmente SELinux).
+1. `2` -> numero de hard links del directorio.
+1. `maxreig` (primero) -> usuario propietario (owner).
+1. `maxreig` (segundo) -> grupo propietario.
+1. `6` -> tamano en bytes (en directorios no representa el tamano real de su contenido).
+1. `Feb 16 21:41` -> fecha/hora de ultima modificacion.
+1. `Videos` -> nombre del archivo/directorio.
+
 ## Formato numerico (octal)
 
 Se suma por bloque (`r=4`, `w=2`, `x=1`):
