@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="390" viewBox="0 0 1100 390" role="img" aria-label="Cockpit Storage LVM referencia local">
+  <defs>
+    <style>
+      .title { font: 700 22px Arial, sans-serif; fill: #111827; }
+      .sub { font: 500 13px Arial, sans-serif; fill: #374151; }
+      .h { font: 700 14px Arial, sans-serif; fill: #111827; }
+      .t { font: 13px Arial, sans-serif; fill: #1f2937; }
+      .panel { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; }
+      .boxA { fill: #dbeafe; stroke: #2563eb; stroke-width: 1.8; }
+      .boxB { fill: #dcfce7; stroke: #16a34a; stroke-width: 1.8; }
+      .boxC { fill: #fef3c7; stroke: #d97706; stroke-width: 1.8; }
+      .arr { stroke: #475569; stroke-width: 2; marker-end: url(#m); }
+    </style>
+    <marker id="m" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1100" height="390" fill="#f8fafc"/>
+  <text x="26" y="34" class="title">Cockpit - Storage/LVM (referencia local)</text>
+  <text x="26" y="56" class="sub">Mapa visual de la cadena PV -> VG -> LV -> filesystem/mount.</text>
+
+  <rect x="26" y="80" width="1048" height="280" rx="10" class="panel"/>
+
+  <rect x="60" y="130" width="250" height="120" rx="10" class="boxA"/>
+  <text x="78" y="160" class="h">Physical Volume (PV)</text>
+  <text x="78" y="186" class="t">/dev/sdb</text>
+  <text x="78" y="208" class="t">Capacidad bruta disponible</text>
+
+  <rect x="420" y="130" width="250" height="120" rx="10" class="boxB"/>
+  <text x="438" y="160" class="h">Volume Group (VG)</text>
+  <text x="438" y="186" class="t">vgdata</text>
+  <text x="438" y="208" class="t">Pool logico de espacio</text>
+
+  <rect x="780" y="110" width="250" height="70" rx="10" class="boxC"/>
+  <text x="798" y="140" class="h">Logical Volume</text>
+  <text x="798" y="160" class="t">/dev/vgdata/lv_app</text>
+
+  <rect x="780" y="200" width="250" height="70" rx="10" class="boxC"/>
+  <text x="798" y="230" class="h">Logical Volume</text>
+  <text x="798" y="250" class="t">/dev/vgdata/lv_logs</text>
+
+  <path d="M310 190 L420 190" class="arr"/>
+  <path d="M670 160 L780 145" class="arr"/>
+  <path d="M670 220 L780 235" class="arr"/>
+
+  <text x="60" y="300" class="t">CLI espejo: lsblk -f, pvs, vgs, lvs, findmnt</text>
+</svg>

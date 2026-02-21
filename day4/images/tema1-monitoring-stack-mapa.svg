@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-label="Mapa de herramientas de monitorizacion para troubleshooting">
+  <defs>
+    <style>
+      .title { font: 700 26px Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 14px Arial, sans-serif; fill: #334155; }
+      .h { font: 700 16px Arial, sans-serif; fill: #111827; }
+      .t { font: 13px Arial, sans-serif; fill: #1f2937; }
+      .boxA { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; }
+      .boxB { fill: #dcfce7; stroke: #16a34a; stroke-width: 2; }
+      .boxC { fill: #fef3c7; stroke: #d97706; stroke-width: 2; }
+      .boxD { fill: #fee2e2; stroke: #dc2626; stroke-width: 2; }
+      .note { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1200" height="500" fill="#f8fafc"/>
+  <text x="28" y="42" class="title">Stack de monitorizacion (Dia 4)</text>
+  <text x="28" y="66" class="sub">Selecciona herramienta segun el sintoma: CPU, RAM, disco, I/O o red.</text>
+
+  <rect x="28" y="92" width="270" height="150" rx="12" class="boxA"/>
+  <text x="46" y="122" class="h">Vista general host</text>
+  <text x="46" y="148" class="t">glances</text>
+  <text x="46" y="170" class="t">atop</text>
+  <text x="46" y="192" class="t">nmon</text>
+
+  <rect x="318" y="92" width="270" height="150" rx="12" class="boxB"/>
+  <text x="336" y="122" class="h">CPU / RAM procesos</text>
+  <text x="336" y="148" class="t">top, htop, btop</text>
+  <text x="336" y="170" class="t">vmstat</text>
+  <text x="336" y="192" class="t">ps --sort</text>
+
+  <rect x="608" y="92" width="270" height="150" rx="12" class="boxC"/>
+  <text x="626" y="122" class="h">Disco / I/O</text>
+  <text x="626" y="148" class="t">iostat (sysstat)</text>
+  <text x="626" y="170" class="t">iotop</text>
+  <text x="626" y="192" class="t">df, du</text>
+
+  <rect x="898" y="92" width="274" height="150" rx="12" class="boxD"/>
+  <text x="916" y="122" class="h">Red</text>
+  <text x="916" y="148" class="t">iftop (flujo por host)</text>
+  <text x="916" y="170" class="t">nload (trafico agregado)</text>
+  <text x="916" y="192" class="t">ss, ip, ping</text>
+
+  <rect x="28" y="274" width="1144" height="196" rx="12" class="note"/>
+  <text x="46" y="306" class="h">Flujo recomendado de clase</text>
+  <text x="46" y="334" class="t">1) Empieza por glances/btop para foto inicial.</text>
+  <text x="46" y="360" class="t">2) Si hay I/O alto, confirma con iostat + iotop.</text>
+  <text x="46" y="386" class="t">3) Si sospechas red, valida con iftop/nload y cruza con ss.</text>
+  <text x="46" y="412" class="t">4) Documenta 3 metricas clave antes y despues del ajuste.</text>
+</svg>

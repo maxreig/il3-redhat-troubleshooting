@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="380" viewBox="0 0 1100 380" role="img" aria-label="Cockpit Metrics referencia local">
+  <defs>
+    <style>
+      .title { font: 700 22px Arial, sans-serif; fill: #111827; }
+      .sub { font: 500 13px Arial, sans-serif; fill: #374151; }
+      .h { font: 700 14px Arial, sans-serif; fill: #111827; }
+      .t { font: 13px Arial, sans-serif; fill: #1f2937; }
+      .panel { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; }
+      .card { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.2; }
+      .lineA { fill: none; stroke: #2563eb; stroke-width: 2; }
+      .lineB { fill: none; stroke: #16a34a; stroke-width: 2; }
+      .lineC { fill: none; stroke: #d97706; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1100" height="380" fill="#f8fafc"/>
+  <text x="26" y="34" class="title">Cockpit - Overview/Metrics (referencia local)</text>
+  <text x="26" y="56" class="sub">Panel rapido para CPU, memoria, disco e I/O durante incidentes.</text>
+
+  <rect x="26" y="80" width="1048" height="270" rx="10" class="panel"/>
+
+  <rect x="46" y="104" width="240" height="95" rx="8" class="card"/>
+  <text x="62" y="130" class="h">CPU</text>
+  <text x="62" y="154" class="t">Uso: 72%</text>
+
+  <rect x="306" y="104" width="240" height="95" rx="8" class="card"/>
+  <text x="322" y="130" class="h">Memoria</text>
+  <text x="322" y="154" class="t">Used: 5.8G / 8G</text>
+
+  <rect x="566" y="104" width="240" height="95" rx="8" class="card"/>
+  <text x="582" y="130" class="h">Disco</text>
+  <text x="582" y="154" class="t">/var: 84% usado</text>
+
+  <rect x="826" y="104" width="228" height="95" rx="8" class="card"/>
+  <text x="842" y="130" class="h">Red</text>
+  <text x="842" y="154" class="t">RX/TX en tiempo real</text>
+
+  <rect x="46" y="214" width="1008" height="116" rx="8" class="card"/>
+  <text x="62" y="238" class="h">Tendencia (ultimos minutos)</text>
+  <path d="M80 300 L160 280 L240 290 L320 250 L400 260 L480 220 L560 230" class="lineA"/>
+  <path d="M80 312 L160 308 L240 300 L320 296 L400 290 L480 282 L560 275" class="lineB"/>
+  <path d="M80 318 L160 320 L240 310 L320 304 L400 296 L480 292 L560 280" class="lineC"/>
+  <text x="590" y="280" class="t">Azul: CPU | Verde: Mem | Naranja: I/O</text>
+</svg>

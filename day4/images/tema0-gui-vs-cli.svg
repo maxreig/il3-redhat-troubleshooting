@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-label="Comparativa GUI vs CLI para troubleshooting Linux">
+  <defs>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 14px Arial, sans-serif; fill: #334155; }
+      .h { font: 700 18px Arial, sans-serif; fill: #111827; }
+      .t { font: 14px Arial, sans-serif; fill: #1f2937; }
+      .panelA { fill: #e0f2fe; stroke: #0284c7; stroke-width: 2; }
+      .panelB { fill: #ecfccb; stroke: #65a30d; stroke-width: 2; }
+      .note { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1200" height="460" fill="#f8fafc"/>
+  <text x="30" y="44" class="title">GUI vs CLI en troubleshooting Linux</text>
+  <text x="30" y="68" class="sub">Regla practica del curso: GUI para orientarte rapido, CLI para confirmar y dejar evidencia reproducible.</text>
+
+  <rect x="30" y="95" width="550" height="250" rx="12" class="panelA"/>
+  <text x="50" y="126" class="h">GUI (Cockpit / GNOME)</text>
+  <text x="50" y="154" class="t">- Ventaja: visibilidad inmediata del estado del host.</text>
+  <text x="50" y="178" class="t">- Ventaja: curva de entrada baja para equipos junior.</text>
+  <text x="50" y="202" class="t">- Riesgo: menos detalle tecnico en incidencias complejas.</text>
+  <text x="50" y="226" class="t">- Uso ideal: primera foto del problema y cambios simples.</text>
+  <text x="50" y="250" class="t">- Ejemplos: Accounts, Storage, Firewall, Metrics.</text>
+
+  <rect x="620" y="95" width="550" height="250" rx="12" class="panelB"/>
+  <text x="640" y="126" class="h">CLI (shell)</text>
+  <text x="640" y="154" class="t">- Ventaja: precision, automatizacion y scripting.</text>
+  <text x="640" y="178" class="t">- Ventaja: evidencia exacta para ticket/postmortem.</text>
+  <text x="640" y="202" class="t">- Riesgo: mayor curva de aprendizaje inicial.</text>
+  <text x="640" y="226" class="t">- Uso ideal: validacion final, root cause y rollback seguro.</text>
+  <text x="640" y="250" class="t">- Ejemplos: journalctl, ss, pvs/vgs/lvs, firewall-cmd.</text>
+
+  <rect x="30" y="365" width="1140" height="70" rx="10" class="note"/>
+  <text x="50" y="395" class="h">Decision rapida</text>
+  <text x="50" y="420" class="t">1) Mira GUI para contexto. 2) Verifica con CLI. 3) Documenta comando + salida + accion aplicada.</text>
+</svg>
