@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420" role="img" aria-label="Referencia visual de glances">
+  <defs>
+    <style>
+      .title { font: 700 22px Arial, sans-serif; fill: #111827; }
+      .sub { font: 500 13px Arial, sans-serif; fill: #374151; }
+      .term { fill: #0f172a; stroke: #334155; stroke-width: 1.5; }
+      .mono { font: 13px 'Courier New', monospace; fill: #e2e8f0; }
+      .ok { fill: #22c55e; }
+      .warn { fill: #f59e0b; }
+      .hot { fill: #ef4444; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1100" height="420" fill="#f8fafc"/>
+  <text x="28" y="36" class="title">glances - referencia local</text>
+  <text x="28" y="58" class="sub">Panel unico para CPU, memoria, swap, disco, red y procesos.</text>
+
+  <rect x="28" y="82" width="1044" height="310" rx="10" class="term"/>
+  <text x="48" y="114" class="mono">$ glances</text>
+  <text x="48" y="140" class="mono">CPU  [|||||||||||       58.2%]</text>
+  <circle cx="305" cy="136" r="5" class="warn"/>
+  <text x="48" y="166" class="mono">MEM  [|||||||||||||     64.7%]  SWAP [|| 9.1%]</text>
+  <circle cx="392" cy="162" r="5" class="ok"/>
+  <text x="48" y="192" class="mono">LOAD 1.92  1.70  1.41</text>
+  <text x="48" y="218" class="mono">DISK I/O  r/s: 18.2  w/s: 42.5  await: 19.4ms</text>
+  <circle cx="462" cy="214" r="5" class="warn"/>
+  <text x="48" y="244" class="mono">NET  Rx: 3.2Mb/s  Tx: 1.1Mb/s</text>
+  <text x="48" y="270" class="mono">Top process: backup.sh  CPU 48.9  MEM 6.1</text>
+  <circle cx="370" cy="266" r="5" class="hot"/>
+  <text x="48" y="304" class="mono">Tips: teclas utiles -> m (mem), d (disk), n (network), q (quit)</text>
+  <text x="48" y="334" class="mono">Uso docente: foto inicial rapida antes de profundizar con iostat/iotop.</text>
+</svg>

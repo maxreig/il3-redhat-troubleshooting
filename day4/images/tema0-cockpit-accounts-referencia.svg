@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="360" viewBox="0 0 1100 360" role="img" aria-label="Cockpit Accounts referencia local">
+  <defs>
+    <style>
+      .title { font: 700 22px Arial, sans-serif; fill: #111827; }
+      .sub { font: 500 13px Arial, sans-serif; fill: #374151; }
+      .h { font: 700 14px Arial, sans-serif; fill: #111827; }
+      .t { font: 13px Arial, sans-serif; fill: #1f2937; }
+      .panel { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; }
+      .menu { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1.2; }
+      .row { fill: #f8fafc; stroke: #e2e8f0; stroke-width: 1; }
+      .tag { fill: #dcfce7; stroke: #16a34a; stroke-width: 1.2; }
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1100" height="360" fill="#f8fafc"/>
+  <text x="26" y="34" class="title">Cockpit - Accounts (referencia local)</text>
+  <text x="26" y="56" class="sub">Vista didactica para localizar usuarios, roles y acciones basicas.</text>
+
+  <rect x="26" y="78" width="180" height="256" rx="8" class="menu"/>
+  <text x="42" y="106" class="h">Menu</text>
+  <text x="42" y="130" class="t">Overview</text>
+  <text x="42" y="152" class="t">Storage</text>
+  <text x="42" y="174" class="t">Networking</text>
+  <text x="42" y="196" class="t">Logs</text>
+  <text x="42" y="218" class="t">Accounts (activo)</text>
+
+  <rect x="226" y="78" width="848" height="256" rx="8" class="panel"/>
+  <text x="246" y="106" class="h">Accounts</text>
+
+  <rect x="246" y="122" width="808" height="48" rx="6" class="row"/>
+  <text x="262" y="151" class="t">root</text>
+  <text x="430" y="151" class="t">Administrator</text>
+  <rect x="610" y="132" width="110" height="28" rx="6" class="tag"/>
+  <text x="630" y="151" class="t">Enabled</text>
+
+  <rect x="246" y="178" width="808" height="48" rx="6" class="row"/>
+  <text x="262" y="207" class="t">ana</text>
+  <text x="430" y="207" class="t">Proyecto</text>
+
+  <rect x="246" y="234" width="808" height="80" rx="6" class="row"/>
+  <text x="262" y="260" class="t">Acciones tipicas:</text>
+  <text x="262" y="282" class="t">- Crear usuario</text>
+  <text x="430" y="282" class="t">- Bloquear/desbloquear cuenta</text>
+  <text x="700" y="282" class="t">- Forzar cambio de password</text>
+</svg>
