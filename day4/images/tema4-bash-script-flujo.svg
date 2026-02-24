@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-label="Infografia de estructura basica de un script Bash">
+  <defs>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #0f172a; }
+      .sub { font: 500 14px Arial, sans-serif; fill: #334155; }
+      .h { font: 700 16px Arial, sans-serif; fill: #111827; }
+      .t { font: 13px Arial, sans-serif; fill: #1f2937; }
+      .code { font: 12px "Courier New", monospace; fill: #0f172a; }
+      .box1 { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; }
+      .box2 { fill: #dcfce7; stroke: #16a34a; stroke-width: 2; }
+      .box3 { fill: #fef3c7; stroke: #d97706; stroke-width: 2; }
+      .box4 { fill: #fee2e2; stroke: #dc2626; stroke-width: 2; }
+      .box5 { fill: #ede9fe; stroke: #7c3aed; stroke-width: 2; }
+      .note { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; }
+      .line { stroke: #64748b; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="640" fill="#f8fafc"/>
+  <text x="28" y="42" class="title">Infografia: Bash scripting basico (Tema 4)</text>
+  <text x="28" y="66" class="sub">Estructura minima recomendada para scripts operativos en RHEL / Linux</text>
+
+  <rect x="28" y="96" width="360" height="160" rx="12" class="box1"/>
+  <text x="48" y="126" class="h">1) Arranque del script</text>
+  <text x="48" y="152" class="t">Incluye shebang y modo estricto segun el caso.</text>
+  <text x="48" y="182" class="code">#!/usr/bin/env bash</text>
+  <text x="48" y="204" class="code">set -euo pipefail</text>
+  <text x="48" y="226" class="t">Tambien: permisos de ejecucion con chmod +x</text>
+
+  <rect x="420" y="96" width="360" height="160" rx="12" class="box2"/>
+  <text x="440" y="126" class="h">2) Entradas y variables</text>
+  <text x="440" y="152" class="t">Parametros posicionales y valores por defecto.</text>
+  <text x="440" y="182" class="code">usuario="${1:-root}"</text>
+  <text x="440" y="204" class="code">ruta="${2:-/var/log}"</text>
+  <text x="440" y="226" class="t">Citar variables: "$var" para evitar errores.</text>
+
+  <rect x="812" y="96" width="360" height="160" rx="12" class="box3"/>
+  <text x="832" y="126" class="h">3) Validaciones</text>
+  <text x="832" y="152" class="t">Comprobar argumentos, ficheros y comandos.</text>
+  <text x="832" y="182" class="code">[[ -d "$ruta" ]] || exit 1</text>
+  <text x="832" y="204" class="code">command -v tar >/dev/null</text>
+  <text x="832" y="226" class="t">Usar codigos de salida y mensajes claros.</text>
+
+  <rect x="28" y="296" width="360" height="170" rx="12" class="box4"/>
+  <text x="48" y="326" class="h">4) Logica: if / case / bucles</text>
+  <text x="48" y="352" class="code">if [[ -s "$f" ]]; then ... fi</text>
+  <text x="48" y="374" class="code">for f in *.log; do ... done</text>
+  <text x="48" y="396" class="code">case "$accion" in backup|clean) ;; esac</text>
+  <text x="48" y="426" class="t">Case mejora claridad frente a multiples if.</text>
+
+  <rect x="420" y="296" width="360" height="170" rx="12" class="box5"/>
+  <text x="440" y="326" class="h">5) Funciones reutilizables</text>
+  <text x="440" y="352" class="code">log(){ printf '[%s] %s\n' "$1" "$2"; }</text>
+  <text x="440" y="374" class="code">backup_dir(){ ... }</text>
+  <text x="440" y="404" class="t">Separa tareas y deja el main al final.</text>
+  <text x="440" y="426" class="t">Facilita pruebas y mantenimiento.</text>
+
+  <rect x="812" y="296" width="360" height="170" rx="12" class="note"/>
+  <text x="832" y="326" class="h">6) Pruebas y depuracion</text>
+  <text x="832" y="352" class="code">bash -n script.sh     # sintaxis</text>
+  <text x="832" y="374" class="code">bash -x script.sh     # traza</text>
+  <text x="832" y="396" class="code">shellcheck script.sh  # lint (opcional)</text>
+  <text x="832" y="426" class="t">Prueba con datos pequenos antes de tocar /etc o /var.</text>
+
+  <line x1="388" y1="176" x2="420" y2="176" class="line"/>
+  <line x1="780" y1="176" x2="812" y2="176" class="line"/>
+  <line x1="600" y1="256" x2="600" y2="296" class="line"/>
+  <line x1="388" y1="381" x2="420" y2="381" class="line"/>
+  <line x1="780" y1="381" x2="812" y2="381" class="line"/>
+
+  <rect x="28" y="500" width="1144" height="112" rx="12" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="48" y="532" class="h">Checklist de entrega (script operativo)</text>
+  <text x="48" y="558" class="t">Shebang correcto | permisos de ejecucion | ayuda/uso | mensajes claros | control de errores | prueba con bash -n/-x</text>
+  <text x="48" y="584" class="t">Evita: rutas hardcodeadas innecesarias, variables sin comillas, borrar sin validacion previa.</text>
+</svg>
