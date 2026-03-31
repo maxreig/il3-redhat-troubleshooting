@@ -181,3 +181,85 @@ Evidencias minimas:
 1. Cambiar varias variables a la vez.
 1. Olvidar validar desde cliente en problemas de red.
 1. Cerrar incidente sin test final de servicio.
+
+---
+
+## Lab extra (30-45 min) - Bash scripting operativo basico (Tema 4)
+
+### Objetivo
+
+Crear un script Bash sencillo para automatizar una comprobacion de espacio en disco con validaciones, codigos de salida y mensajes para operador.
+
+### Contexto
+
+El equipo de soporte necesita una herramienta rapida para comprobar uso de disco en una ruta y devolver estado `OK/WARNING` sin ejecutar comandos manuales cada vez.
+
+### Tarea principal: `check_disk.sh`
+
+Crear un script `check_disk.sh` que:
+
+1. Reciba una ruta como parametro (por defecto `/`).
+1. Reciba un umbral opcional (por defecto `80`).
+1. Valide que la ruta existe.
+1. Muestre uso de disco de la ruta (`df -h`).
+1. Extraiga el porcentaje de uso real.
+1. Devuelva `WARNING` y `exit 1` si supera el umbral.
+1. Devuelva `OK` y `exit 0` si esta por debajo o igual al umbral.
+
+### Requisitos tecnicos (minimos)
+
+1. Debe incluir shebang `#!/usr/bin/env bash`.
+1. Debe usar comillas en variables (`"$ruta"`).
+1. Debe validar parametros basicos.
+1. Debe funcionar con `bash -n` (sin errores de sintaxis).
+
+### Pista de comandos utiles
+
+```bash
+df -P / | tail -n 1
+df -P / | awk 'NR==2 {print $5}'
+tr -d '%'
+```
+
+### Plantilla de prueba (ejecucion)
+
+```bash
+chmod +x check_disk.sh
+bash -n check_disk.sh
+./check_disk.sh
+./check_disk.sh /tmp
+./check_disk.sh / 1
+echo $?
+```
+
+### Evidencia esperada
+
+1. Captura/salida de `bash -n check_disk.sh`.
+1. Ejecucion con ruta por defecto.
+1. Ejecucion con umbral bajo (para forzar `WARNING`).
+1. Codigo de salida mostrado con `echo $?`.
+
+### Extension opcional (nivel +1)
+
+Añadir un segundo script `check_service.sh` que:
+
+1. Reciba nombre de servicio (`sshd` por defecto).
+1. Use `systemctl is-active --quiet`.
+1. Muestre `OK`/`CRITICAL`.
+1. Devuelva `exit 0` o `exit 2`.
+
+Comandos de prueba:
+
+```bash
+./check_service.sh
+./check_service.sh sshd
+./check_service.sh servicio_inexistente
+```
+
+### Checklist de correccion (docente)
+
+1. El script ejecuta sin error de sintaxis.
+1. El alumno usa parametros y valores por defecto.
+1. El porcentaje se parsea correctamente (sin `%`).
+1. El codigo de salida coincide con el resultado.
+1. El mensaje final es claro para operacion (`OK` o `WARNING`).

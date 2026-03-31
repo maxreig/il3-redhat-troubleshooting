@@ -14,6 +14,20 @@ Flujo recomendado en cualquier incidente:
 1. Corregir con cambio minimo y reversible.
 1. Verificar resultado y documentar.
 
+### Infografia rapida: flujo de diagnostico
+
+Grafico/cheat sheet en formato imagen (fuente externa, Red Hat Developer) para apoyo rapido en diagnostico de incidencias Linux:
+
+![Advanced Linux Commands cheat sheet (Red Hat Developer, portada)](https://developers.redhat.com/sites/default/files/styles/cheat_sheet_feature/public/COver%20graphics_Advanced%20Linux%20Commands%20Cheat%20Sheet.png?itok=vXqQJcPN)
+
+Fuente: [Advanced Linux Commands cheat sheet (Red Hat Developer)](https://developers.redhat.com/cheat-sheets/advanced-linux-commands)
+
+Lectura rapida:
+
+1. No reiniciar primero; confirmar evidencia.
+1. Aislar la capa que falla antes de cambiar nada.
+1. Hacer un cambio pequeno, verificar y documentar.
+
 ## Referencias oficiales Red Hat (capturas reales)
 
 Estas capturas son de documentacion oficial de Red Hat Web Console (Cockpit).  
@@ -37,6 +51,17 @@ Documentacion oficial recomendada (RHEL 9):
 1. [Using systemd unit files](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/using_systemd_unit_files_to_customize_and_optimize_your_system/index)
 1. [Security hardening](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/index)
 1. [Managing systems using the RHEL web console (capturas)](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html-single/managing_systems_using_the_rhel_7_web_console/index)
+
+## Infografia recomendada (Red Hat/Linux)
+
+Material visual tipo "cheat sheet" para usar durante incidencias:
+
+1. [systemd Commands cheat sheet (Red Hat Developer)](https://developers.redhat.com/cheat-sheets/systemd-commands-cheat-sheet)  
+   Muy util para servicios que no arrancan (`systemctl`, `journalctl`).
+1. [Advanced Linux Commands cheat sheet (Red Hat Developer)](https://developers.redhat.com/cheat-sheets/advanced-linux-commands)  
+   Referencia rapida para red, procesos, disco, permisos y SELinux.
+1. [RHEL cheat sheets for system administrators (Customer Portal)](https://access.redhat.com/rhel-cheatsheets)  
+   Indice oficial con varias hojas visuales para troubleshooting por tema.
 
 ## 1) Conectividad
 

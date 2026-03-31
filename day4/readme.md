@@ -6,6 +6,7 @@
 - [`tema1-monitorizacion-basica.md`](tema1-monitorizacion-basica.md) -> monitorizacion operativa de CPU, RAM y disco (`top`, `free`, `df`, `iostat`).
 - [`tema2-logs-journald.md`](tema2-logs-journald.md) -> uso practico de `journalctl`, jerarquia de logs y rutas clave en `/var/log`.
 - [`tema3-diagnostico-problemas-comunes.md`](tema3-diagnostico-problemas-comunes.md) -> metodo guiado para conectividad, servicios caidos, falta de espacio y accesos.
+- [`tema4-shell-script-bash.md`](tema4-shell-script-bash.md) -> nociones basicas de scripting en Bash para automatizar tareas operativas.
 - [`comandos-dia4.md`](comandos-dia4.md) -> chuleta de comandos del dia 4.
 - [`labs-dia4.md`](labs-dia4.md) -> lab final con escenario integrado de troubleshooting.
 
